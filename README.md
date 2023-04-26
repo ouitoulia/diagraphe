@@ -1,2 +1,2 @@
-# diagraphe
+# Diagraphe
 Diagraphè - Progetto
