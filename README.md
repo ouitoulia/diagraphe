@@ -1,5 +1,10 @@
 # Diagraphè
-[Diagraphè](https://www.grecoantico.com/dizionario-greco-antico.php?lemma=DIAGRAFH100) - Progetto
+![GitHub](https://img.shields.io/github/license/ouitoulia/diagraphe?style=for-the-badge)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ouitoulia/diagraphe?sort=semver&style=for-the-badge)
+![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/ouitoulia/diagraphe/drupal/core-recommended?style=for-the-badge)
+![Packagist Downloads](https://img.shields.io/packagist/dt/ouitoulia/diagraphe?style=for-the-badge)
+
+[Diagraphè](https://www.grecoantico.com/dizionario-greco-antico.php?lemma=DIAGRAFH100) è un modello che installa la distribuzione Drupal Ouitoulìa
 
 ## Installazione
 
