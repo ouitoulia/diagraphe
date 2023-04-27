@@ -2,7 +2,14 @@
     "name": "ouitoulia/diagraphe",
     "description": "Modello che installa la distribuzione Drupal Ouitoulìa",
     "type": "project",
-    "license": "GPL-3.0-only",
+    "license": "GPL-3.0-only","authors": [
+    {
+        "name": "Pietro Arturo Panetta",
+        "email": "arturu@arturu.it",
+        "homepage": "https://www.drupal.org/u/arturopanetta",
+        "role": "Maintainer"
+    }
+],
     "homepage": "https://github.com/ouitoulia/diagraphe",
     "support": {
         "docs": "https://github.com/ouitoulia/diagraphe#readme",
