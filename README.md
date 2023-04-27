@@ -1,6 +1,12 @@
 # Diagraphè
 [Diagraphè](https://www.grecoantico.com/dizionario-greco-antico.php?lemma=DIAGRAFH100) - Progetto
 
+## Installazione
+
+```shell
+$ composer create ouitoulia/diagraphe project-name
+```
+
 ## License
 
 Copyright (C) 2023 https://github.com/ouitoulia
