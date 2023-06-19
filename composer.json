@@ -1,84 +1,102 @@
 {
-    "name": "ouitoulia/diagraphe",
-    "description": "Diagraphè è un modello che installa la distribuzione Drupal Ouitoulìa",
-    "type": "project",
-    "license": "GPL-3.0-only","authors": [
+  "name": "ouitoulia/diagraphe",
+  "description": "Diagraphè è un modello che installa la distribuzione Drupal Ouitoulìa",
+  "type": "project",
+  "license": "GPL-3.0-only",
+  "authors": [
     {
-        "name": "Pietro Arturo Panetta",
-        "email": "arturu@arturu.it",
-        "homepage": "https://www.drupal.org/u/arturopanetta",
-        "role": "Maintainer"
+      "name": "Pietro Arturo Panetta",
+      "email": "arturu@arturu.it",
+      "homepage": "https://www.drupal.org/u/arturopanetta",
+      "role": "Maintainer"
     }
-],
-    "homepage": "https://github.com/ouitoulia/diagraphe",
-    "support": {
-        "docs": "https://github.com/ouitoulia/diagraphe#readme",
-        "issues": "https://github.com/ouitoulia/diagraphe/issues"
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        }
-    ],
-    "require": {
-        "composer/installers": "^2.0",
-        "drupal/admin_toolbar": "^3.3",
-        "drupal/core-composer-scaffold": "^10.0",
-        "drupal/core-project-message": "^10.0",
-        "drupal/core-recommended": "^10.0",
-        "drupal/field_group": "^3.4",
-        "drupal/pathauto": "^1.11"
-    },
-    "require-dev": {
-        "drupal/core-dev": "^10.0"
-    },
-    "conflict": {
-        "drupal/drupal": "*"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "allow-plugins": {
-            "composer/installers": true,
-            "drupal/core-composer-scaffold": true,
-            "drupal/core-project-message": true,
-            "phpstan/extension-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        },
-        "sort-packages": true
-    },
-    "extra": {
-        "drupal-scaffold": {
-            "locations": {
-                "web-root": "web/"
-            }
-        },
-        "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
-            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
-            "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
-            "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
-        },
-        "drupal-core-project-message": {
-            "include-keys": ["homepage", "support"],
-            "post-create-project-cmd-message": [
-                "<bg=blue;fg=white>                                                         </>",
-                "<bg=blue;fg=white>  Congratulazioni, hai installato la codebase Ouitoulìa  </>",
-                "<bg=blue;fg=white>  partendo dal modello ouitoulia/diagraphe               </>",
-                "<bg=blue;fg=white>                                                         </>",
-                "",
-                "<bg=yellow;fg=black>Prossimi passi</>:",
-
-                "  * Installa il sito: https://www.drupal.org/docs/user_guide/en/install-run.html",
-                "  * Leggi la guida utente: https://www.drupal.org/docs/user_guide/en/index.html",
-                "  * Per ricevere supporto: https://github.com/ouitoulia/diagraphe/issues"
-            ]
-        }
+  ],
+  "homepage": "https://github.com/ouitoulia/diagraphe",
+  "support": {
+    "docs": "https://github.com/ouitoulia/diagraphe#readme",
+    "issues": "https://github.com/ouitoulia/diagraphe/issues"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
     }
+  ],
+  "require": {
+    "drupal/recommended-project": "^10.0",
+    "drupal/admin_toolbar": "^3.3",
+    "drupal/field_group": "^3.4",
+    "drupal/pathauto": "^1.11"
+  },
+  "require-dev": {
+    "drupal/core-dev": "^10.0"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "drupal/core-composer-scaffold": true,
+      "drupal/core-project-message": true,
+      "phpstan/extension-installer": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true
+  },
+  "extra": {
+    "drupal-scaffold": {
+      "locations": {
+        "web-root": "web/"
+      }
+    },
+    "installer-paths": {
+      "web/core": [
+        "type:drupal-core"
+      ],
+      "web/libraries/{$name}": [
+        "type:drupal-library"
+      ],
+      "web/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "web/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "web/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "drush/Commands/contrib/{$name}": [
+        "type:drupal-drush"
+      ],
+      "web/modules/custom/{$name}": [
+        "type:drupal-custom-module"
+      ],
+      "web/profiles/custom/{$name}": [
+        "type:drupal-custom-profile"
+      ],
+      "web/themes/custom/{$name}": [
+        "type:drupal-custom-theme"
+      ]
+    },
+    "drupal-core-project-message": {
+      "include-keys": [
+        "homepage",
+        "support"
+      ],
+      "post-create-project-cmd-message": [
+        "<bg=blue;fg=white>                                                         </>",
+        "<bg=blue;fg=white>  Congratulazioni, hai installato la codebase Ouitoulìa  </>",
+        "<bg=blue;fg=white>  partendo dal modello ouitoulia/diagraphe               </>",
+        "<bg=blue;fg=white>                                                         </>",
+        "",
+        "<bg=yellow;fg=black>Prossimi passi</>:",
+        "  * Installa il sito: https://www.drupal.org/docs/user_guide/en/install-run.html",
+        "  * Leggi la guida utente: https://www.drupal.org/docs/user_guide/en/index.html",
+        "  * Per ricevere supporto: https://github.com/ouitoulia/diagraphe/issues"
+      ]
+    }
+  }
 }
