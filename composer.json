@@ -9,6 +9,11 @@
       "email": "arturu@arturu.it",
       "homepage": "https://www.drupal.org/u/arturopanetta",
       "role": "Maintainer"
+    },
+    {
+      "name": "Maurizio Cavalletti",
+      "homepage": "https://www.drupal.org/u/maurizio_akabit",
+      "role": "Maintainer"
     }
   ],
   "homepage": "https://github.com/ouitoulia/diagraphe",
@@ -25,8 +30,16 @@
   "require": {
     "drupal/recommended-project": "^10.0",
     "drupal/admin_toolbar": "^3.3",
+    "drupal/color_field": "^3.0",
+    "drupal/entity_reference_display": "^2.0",
     "drupal/field_group": "^3.4",
-    "drupal/pathauto": "^1.11"
+    "drupal/focal_point": "^2.0",
+    "drupal/geofield": "^1.53",
+    "drupal/imce": "^3.0",
+    "drupal/leaflet": "^10.0",
+    "drupal/paragraphs": "^1.15",
+    "drupal/pathauto": "^1.11",
+    "ouitoulia/skenografia": "^1.0"
   },
   "require-dev": {
     "drupal/core-dev": "^10.0"
