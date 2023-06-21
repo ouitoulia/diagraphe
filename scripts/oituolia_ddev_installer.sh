@@ -233,6 +233,14 @@ ddev exec drush -y pm:install pathauto
 ddev exec drush -y config:set pathauto.settings punctuation.slash 1
 
 echo " "
+n "Installo il tema" notice
+echo "---------------------------"
+ddev exec drush -y pm:enable components big_pipe inline_form_errors responsive_image
+ddev exec drush -y theme:enable bootstrap_italia
+ddev exec drush -y theme:enable skenografia
+ddev exec drush -y config:set system.theme default skenografia
+
+echo " "
 n "Installo i vocabolari" notice
 echo "--------------------------------"
 ddev composer require ouitoulia/lexika --no-cache
