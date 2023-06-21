@@ -302,4 +302,5 @@ echo "------------------"
 
 #ddev ssh
 ddev describe
-echo "La password di admin è: ${adminPass}"
+echo "La password di admin è: ${adminPass} oppure clicca su: "
+ddev exec drush uli
