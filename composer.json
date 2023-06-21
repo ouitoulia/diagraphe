@@ -28,7 +28,7 @@
     }
   ],
   "require": {
-    "drupal/recommended-project": "^10.0",
+    "drupal/recommended-project": "^10.1",
     "drupal/admin_toolbar": "^3.3",
     "drupal/color_field": "^3.0",
     "drupal/entity_reference_display": "^2.0",
@@ -42,7 +42,7 @@
     "ouitoulia/skenografia": "^1.0"
   },
   "require-dev": {
-    "drupal/core-dev": "^10.0"
+    "drupal/core-dev": "^10.1"
   },
   "conflict": {
     "drupal/drupal": "*"
@@ -66,39 +66,18 @@
       }
     },
     "installer-paths": {
-      "web/core": [
-        "type:drupal-core"
-      ],
-      "web/libraries/{$name}": [
-        "type:drupal-library"
-      ],
-      "web/modules/contrib/{$name}": [
-        "type:drupal-module"
-      ],
-      "web/profiles/contrib/{$name}": [
-        "type:drupal-profile"
-      ],
-      "web/themes/contrib/{$name}": [
-        "type:drupal-theme"
-      ],
-      "drush/Commands/contrib/{$name}": [
-        "type:drupal-drush"
-      ],
-      "web/modules/custom/{$name}": [
-        "type:drupal-custom-module"
-      ],
-      "web/profiles/custom/{$name}": [
-        "type:drupal-custom-profile"
-      ],
-      "web/themes/custom/{$name}": [
-        "type:drupal-custom-theme"
-      ]
+      "web/core": ["type:drupal-core"],
+      "web/libraries/{$name}": ["type:drupal-library"],
+      "web/modules/contrib/{$name}": ["type:drupal-module"],
+      "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "web/themes/contrib/{$name}": ["type:drupal-theme"],
+      "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+      "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+      "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
+      "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
     },
     "drupal-core-project-message": {
-      "include-keys": [
-        "homepage",
-        "support"
-      ],
+      "include-keys": ["homepage","support"],
       "post-create-project-cmd-message": [
         "<bg=blue;fg=white>                                                         </>",
         "<bg=blue;fg=white>  Congratulazioni, hai installato la codebase Ouitoulìa  </>",
