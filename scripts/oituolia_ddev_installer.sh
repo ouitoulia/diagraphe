@@ -261,9 +261,15 @@ ddev composer require ouitoulia/bibliotheke --no-cache
 ddev exec drush -y pm:install bibliotheke
 
 echo " "
+n "Installo i moduli necessari ai campi" notice
+echo "-----------------------------------------------"
+ddev exec drush -y pm:enable datetime field file image options text telephone
+ddev exec drush -y pm:enable bootstrap_italia_paragraph
+
+echo " "
 n "Installo il tipo di contenuto 'Persona'" notice
 echo "--------------------------------------------------"
-ddev exec drush -y pm:install datetime field file image options text telephone views field_group
+ddev exec drush -y pm:install views field_group
 ddev composer require ouitoulia/prosopon --no-cache
 ddev exec drush -y pm:install prosopon
 
