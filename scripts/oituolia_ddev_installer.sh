@@ -278,7 +278,7 @@ ddev exec drush -y pm:enable bootstrap_italia_image_style \
  bootstrap_italia_paragraph_section bootstrap_italia_paragraph_timeline
 
 ddev composer require ouitoulia/themethla --no-cache
-ddev exec -y pm:install themethla
+ddev exec drush -y pm:install themethla
 
 echo " "
 n "Installo il tipo di contenuto 'Persona'" notice

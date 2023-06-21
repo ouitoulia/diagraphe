@@ -39,6 +39,7 @@
     "drupal/leaflet": "^10.0",
     "drupal/paragraphs": "^1.15",
     "drupal/pathauto": "^1.11",
+    "drupal/term_reference_tree": "^2.0",
     "ouitoulia/skenografia": "^1.0"
   },
   "require-dev": {
