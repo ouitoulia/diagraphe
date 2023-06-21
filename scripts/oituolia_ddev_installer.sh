@@ -263,19 +263,33 @@ ddev exec drush -y pm:install bibliotheke
 echo " "
 n "Installo i moduli necessari ai campi" notice
 echo "-----------------------------------------------"
-ddev exec drush -y pm:enable datetime field file image options text telephone
-ddev exec drush -y pm:enable bootstrap_italia_paragraph
+ddev exec drush -y pm:enable datetime field field_group file \
+ focal_point image media media_library \
+ node options taxonomy telephone text views
+
+ddev exec drush -y pm:enable entity_reference_revisions paragraphs
+
+ddev exec drush -y pm:enable bootstrap_italia_image_style \
+ bootstrap_italia_paragraph bootstrap_italia_paragraph_accordion \
+ bootstrap_italia_paragraph_attachments bootstrap_italia_paragraph_callout \
+ bootstrap_italia_paragraph_carousel bootstrap_italia_paragraph_citation \
+ bootstrap_italia_paragraph_gallery bootstrap_italia_paragraph_hero \
+ bootstrap_italia_paragraph_map bootstrap_italia_paragraph_node_reference \
+ bootstrap_italia_paragraph_section bootstrap_italia_paragraph_timeline
+
+ddev composer require ouitoulia/themethla --no-cache
+ddev exec -y pm:install themethla
 
 echo " "
 n "Installo il tipo di contenuto 'Persona'" notice
 echo "--------------------------------------------------"
-ddev exec drush -y pm:install views field_group
+ddev exec drush -y pm:install imce term_reference_tree
 ddev composer require ouitoulia/prosopon --no-cache
 ddev exec drush -y pm:install prosopon
 
 echo " "
-n "Importo i ruoli associati al tipo 'Persona'" notice
-echo "------------------------------------------------------"
+n "Importo i ruoli dell'entity 'User'" notice
+echo "---------------------------------------------"
 ddev composer require ouitoulia/sunchronizo_prosopon --no-cache
 ddev exec drush -y pm:install sunchronizo_prosopon
 ddev exec drush migrate:import scuola_roles
