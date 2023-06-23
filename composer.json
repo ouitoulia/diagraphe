@@ -30,6 +30,7 @@
   "require": {
     "drupal/recommended-project": "^10.1",
     "drupal/admin_toolbar": "^3.3",
+    "drupal/address": "^1.12",
     "drupal/color_field": "^3.0",
     "drupal/entity_reference_display": "^2.0",
     "drupal/field_group": "^3.4",
@@ -39,6 +40,7 @@
     "drupal/leaflet": "^10.0",
     "drupal/paragraphs": "^1.15",
     "drupal/pathauto": "^1.11",
+    "drupal/office_hours": "^1.11",
     "drupal/term_reference_tree": "^2.0",
     "ouitoulia/skenografia": "^1.0"
   },

@@ -263,11 +263,10 @@ ddev exec drush -y pm:install bibliotheke
 echo " "
 n "Installo i moduli necessari ai campi" notice
 echo "-----------------------------------------------"
-ddev exec drush -y pm:enable datetime field field_group file \
- focal_point image media media_library \
- node options taxonomy telephone text views
-
-ddev exec drush -y pm:enable entity_reference_revisions paragraphs
+ddev exec drush -y pm:enable datetime field file image media media_library \
+ node options taxonomy telephone text views \
+ address entity_reference_revisions geofield field_group office_hours \
+ focal_point paragraphs
 
 ddev exec drush -y pm:enable bootstrap_italia_image_style \
  bootstrap_italia_paragraph bootstrap_italia_paragraph_accordion \
@@ -286,6 +285,13 @@ echo "--------------------------------------------------"
 ddev exec drush -y pm:install imce term_reference_tree
 ddev composer require ouitoulia/prosopon --no-cache
 ddev exec drush -y pm:install prosopon
+
+echo " "
+n "Installo il tipo di contenuto 'Luogo'" notice
+echo "--------------------------------------------------"
+ddev exec drush -y pm:install leaflet
+ddev composer require ouitoulia/topographia --no-cache
+ddev exec drush -y pm:install topographia
 
 echo " "
 n "Importo i ruoli dell'entity 'User'" notice
