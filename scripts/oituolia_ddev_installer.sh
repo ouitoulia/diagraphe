@@ -191,7 +191,7 @@ echo " "
 n "Scarico Drupal" notice
 echo "-------------------------"
 
-ddev composer create ouitoulia/diagraphe --no-install
+ddev composer create ouitoulia/diagraphe:^10.1 --no-install --no-cache
 ddev composer require drush/drush --no-install
 ddev composer install
 
@@ -217,8 +217,7 @@ echo "--------------------------------------------"
 ddev exec drush -y theme:enable claro
 ddev exec drush -y config:set system.theme admin claro
 ddev exec drush -y config:set node.settings use_admin_theme 1
-ddev exec drush -y pm:install toolbar
-ddev exec drush -y pm:install admin_toolbar admin_toolbar_tools
+ddev exec drush -y pm:install toolbar admin_toolbar admin_toolbar_tools
 
 echo " "
 n "Solo gli amministratori possono registrare nuovi utenti" notice
@@ -228,16 +227,14 @@ ddev exec drush -y config:set user.settings register admin_only
 echo " "
 n "Installo le dipendenze necessarie ai vocabolari" notice
 echo "----------------------------------------------------------"
-ddev exec drush -y pm:install field
-ddev exec drush -y pm:install pathauto
+ddev exec drush -y pm:install field pathauto
 ddev exec drush -y config:set pathauto.settings punctuation.slash 1
 
 echo " "
 n "Installo il tema" notice
 echo "---------------------------"
 ddev exec drush -y pm:enable components big_pipe inline_form_errors responsive_image
-ddev exec drush -y theme:enable bootstrap_italia
-ddev exec drush -y theme:enable skenografia
+ddev exec drush -y theme:enable bootstrap_italia skenografia
 ddev exec drush -y config:set system.theme default skenografia
 
 echo " "
