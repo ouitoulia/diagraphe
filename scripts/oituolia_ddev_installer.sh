@@ -207,7 +207,7 @@ echo "--------------------------------------------------"
 ddev exec chmod -R +x /var/www/html/scripts/
 
 echo " "
-n "Installo ouitoulia codebase" notice
+n "Installo Ouitoulía codebase" notice
 echo "-------------------------"
 ddev exec /var/www/html/scripts/get_ouitoulia_codebase.sh ${ouitouliaCodebaseInstallVersion}
 
