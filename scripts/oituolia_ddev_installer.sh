@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ################################################################################
 #
 #  Questo è uno script che installa Ouitoulìa CMS
@@ -10,6 +10,8 @@
 #
 ################################################################################
 
+declare -gr timestamp_start=$(date +%s)
+
 #-[ Impostazioni ]----------------
 loggingInFile=0
 notificationDisplayLevelNotice=1
@@ -19,7 +21,19 @@ notificationDisplayLevelDanger=1
 notificationDisplayLevelDebugLiv1=0
 notificationDisplayLevelDebugLiv2=0
 notificationDisplayLevelDebugLiv3=0
+ouitouliaCodebaseInstallVersion="^10.1"
 
+# La cartella base dove si trova questo script
+if [[ -L "${BASH_SOURCE[0]}" ]]; then
+  symlink_path=$(readlink -f "${BASH_SOURCE[0]}")
+  folderBase=$(dirname "$symlink_path")
+else
+  if [ "$notificationDisplayLevelDebugLiv1" = "1" ]; then
+    folderBase=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+  else
+    folderBase="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+  fi
+fi
 
 #-[ Funzioni ]--------------------
 function n() { notification "$1" "$2"; } #alias di notification
@@ -188,12 +202,14 @@ echo "----------------------------"
 ddev start
 
 echo " "
-n "Scarico Drupal" notice
-echo "-------------------------"
+n "Do i permessi di esecuzione agli script" notice
+echo "--------------------------------------------------"
+ddev exec chmod -R +x /var/www/html/scripts/
 
-ddev composer create ouitoulia/diagraphe:^10.1 --no-install --no-cache
-ddev composer require drush/drush --no-install
-ddev composer install
+echo " "
+n "Installo ouitoulia codebase" notice
+echo "-------------------------"
+ddev exec /var/www/html/scripts/get_ouitoulia_codebase.sh ${ouitouliaCodebaseInstallVersion}
 
 echo " "
 n "Installo Drupal in italiano con il profilo minimal" notice
