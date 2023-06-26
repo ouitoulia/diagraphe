@@ -21,7 +21,7 @@ notificationDisplayLevelDanger=1
 notificationDisplayLevelDebugLiv1=0
 notificationDisplayLevelDebugLiv2=0
 notificationDisplayLevelDebugLiv3=0
-ouitouliaCodebaseInstallVersion="^10.1"
+ouitouliaCodebaseInstallVersion="^10.x-dev"
 
 # La cartella base dove si trova questo script
 if [[ -L "${BASH_SOURCE[0]}" ]]; then
@@ -43,7 +43,7 @@ function notification() {
 
   # Evidenziazione del testo
   if [ "$loggingInFile" = "1" ]; then
-    local text_bold=``
+    local text_bold=""
     local text_color_red=""
     local text_color_green=""
     local text_color_yellow=""
@@ -57,7 +57,7 @@ function notification() {
     local bg_blue=""
     local bg_magenta=""
     local bg_cyan=""
-    local text_reset=``
+    local text_reset=""
   else
     local text_bold=`tput bold`
     local text_color_red="\e[0;31m"
@@ -202,116 +202,29 @@ echo "----------------------------"
 ddev start
 
 echo " "
-n "Do i permessi di esecuzione agli script" notice
-echo "--------------------------------------------------"
+n "Installo Ouitoulía codebase" notice
+echo "--------------------------------------"
+ddev composer create ouitoulia/diagraphe:${ouitouliaCodebaseInstallVersion} --no-install --no-cache
+
+echo " "
+n "Do i permessi di esecuzione agli script di installazione" notice
+echo "-------------------------------------------------------------------"
 ddev exec chmod -R +x /var/www/html/scripts/
 
 echo " "
-n "Installo Ouitoulía codebase" notice
-echo "-------------------------"
-ddev exec /var/www/html/scripts/get_ouitoulia_codebase.sh ${ouitouliaCodebaseInstallVersion}
+n "Installo le dipendenze della codebase" notice
+echo "------------------------------------------------"
+ddev exec /var/www/html/scripts/setup_step01__ouitoulia_codebase.sh
 
 echo " "
-n "Installo Drupal in italiano con il profilo minimal" notice
-echo "-------------------------------------------------------------"
-ddev exec drush -y site:install minimal --locale=it --account-pass=${adminPass}
-ddev exec drush -y config:set system.date country.default IT
-ddev exec drush -y config:set system.date first_day 1
-ddev exec drush -y config:set system.date timezone.default Europe/Rome
-ddev exec drush -y config:set "core.date_format.long pattern 'l, j F Y - H:i'"
-ddev exec drush -y config:set "core.date_format.medium pattern 'D, d/m/Y - H:i'"
-ddev exec drush -y config:set "core.date_format.short pattern 'd/m/Y - H:i'"
+n "Setup iniziale di Drupal" notice
+echo "-----------------------------------"
+ddev exec /var/www/html/scripts/setup_step02__configure_drupal ${adminPass}
 
 echo " "
-n "Imposto il numero massimo di caratteri nel sommario" notice
-echo "--------------------------------------------------------------"
-ddev exec drush -y config:set text.settings default_summary_length 160
-
-echo " "
-n "Attivo il tema di amministrazione" notice
-echo "--------------------------------------------"
-ddev exec drush -y theme:enable claro
-ddev exec drush -y config:set system.theme admin claro
-ddev exec drush -y config:set node.settings use_admin_theme 1
-ddev exec drush -y pm:install toolbar admin_toolbar admin_toolbar_tools
-
-echo " "
-n "Solo gli amministratori possono registrare nuovi utenti" notice
-echo "------------------------------------------------------------------"
-ddev exec drush -y config:set user.settings register admin_only
-
-echo " "
-n "Installo le dipendenze necessarie ai vocabolari" notice
-echo "----------------------------------------------------------"
-ddev exec drush -y pm:install field pathauto
-ddev exec drush -y config:set pathauto.settings punctuation.slash 1
-
-echo " "
-n "Installo il tema" notice
-echo "---------------------------"
-ddev exec drush -y pm:enable components big_pipe inline_form_errors responsive_image
-ddev exec drush -y theme:enable bootstrap_italia skenografia
-ddev exec drush -y config:set system.theme default skenografia
-
-echo " "
-n "Installo i vocabolari" notice
-echo "--------------------------------"
-ddev composer require ouitoulia/lexika --no-cache
-ddev exec drush -y en lexika
-
-echo " "
-n "Importo le voci di tassonomia" notice
-echo "----------------------------------------"
-ddev composer require ouitoulia/sunchronizo_lexika --no-cache
-ddev exec drush -y en sunchronizo_lexika
-ddev exec drush migrate:import --all
-
-echo " "
-n "Installo le configurazioni di 'Media'" notice
-echo "--------------------------------------------------"
-ddev exec drush -y pm:install file image media media_library
-ddev composer require ouitoulia/bibliotheke --no-cache
-ddev exec drush -y pm:install bibliotheke
-
-echo " "
-n "Installo i moduli necessari ai campi" notice
-echo "-----------------------------------------------"
-ddev exec drush -y pm:enable datetime field file image media media_library \
- node options taxonomy telephone text views \
- address entity_reference_revisions geofield field_group office_hours \
- focal_point paragraphs
-
-ddev exec drush -y pm:enable bootstrap_italia_image_style \
- bootstrap_italia_paragraph bootstrap_italia_paragraph_accordion \
- bootstrap_italia_paragraph_attachments bootstrap_italia_paragraph_callout \
- bootstrap_italia_paragraph_carousel bootstrap_italia_paragraph_citation \
- bootstrap_italia_paragraph_gallery bootstrap_italia_paragraph_hero \
- bootstrap_italia_paragraph_map bootstrap_italia_paragraph_node_reference \
- bootstrap_italia_paragraph_section bootstrap_italia_paragraph_timeline
-
-ddev composer require ouitoulia/themethla --no-cache
-ddev exec drush -y pm:install themethla
-
-echo " "
-n "Installo il tipo di contenuto 'Persona'" notice
-echo "--------------------------------------------------"
-ddev exec drush -y pm:install imce term_reference_tree
-ddev composer require ouitoulia/prosopon --no-cache
-ddev exec drush -y pm:install prosopon
-
-echo " "
-n "Installo il tipo di contenuto 'Luogo'" notice
-echo "--------------------------------------------------"
-ddev exec drush -y pm:install leaflet
-ddev composer require ouitoulia/topographia --no-cache
-ddev exec drush -y pm:install topographia
-
-echo " "
-n "Importo i ruoli dell'entity 'User'" notice
-echo "---------------------------------------------"
-ddev composer require ouitoulia/sunchronizo_prosopon --no-cache
-ddev exec drush -y pm:install sunchronizo_prosopon
-ddev exec drush migrate:import scuola_roles
+n "Setup iniziale di Ouitoulía" notice
+echo "--------------------------------------"
+ddev exec /var/www/html/scripts/setup_step03__configure_ouitoulia
 
 echo " "
 n "Pulizia" notice
