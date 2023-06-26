@@ -7,9 +7,19 @@
 [Diagraphè](https://www.grecoantico.com/dizionario-greco-antico.php?lemma=DIAGRAFH100) è un modello che installa la distribuzione Drupal Ouitoulìa
 
 ## Installazione
-
+Per installare il CMS Ouitoulía procedi così
+1) Installa il codice:
 ```shell
-$ composer create ouitoulia/diagraphe project-name
+$ composer create ouitoulia/diagraphe project-name --no-install
+$ composer require drush/drush --no-install
+$ composer install
+```
+2) Configura Drupal eseguendo [setup_step02](scripts/setup_step02__configure_drupal.sh)
+3) Configura Ouitoulía eseguendo [setup_step03](scripts/setup_step03__configure_ouitoulia.sh)
+
+Se usi ddev puoi installare tutto con un unico comando, esegui [ddev_installer](scripts/oituolia_ddev_installer.sh)
+```shell
+bash <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.x/scripts/oituolia_ddev_installer.sh")
 ```
 
 ## License
