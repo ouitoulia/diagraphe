@@ -219,12 +219,12 @@ ddev exec /var/www/html/scripts/setup_step01__ouitoulia_codebase.sh
 echo " "
 n "Setup iniziale di Drupal" notice
 echo "-----------------------------------"
-ddev exec /var/www/html/scripts/setup_step02__configure_drupal ${adminPass}
+ddev exec /var/www/html/scripts/setup_step02__configure_drupal.sh ${adminPass}
 
 echo " "
 n "Setup iniziale di Ouitoulía" notice
 echo "--------------------------------------"
-ddev exec /var/www/html/scripts/setup_step03__configure_ouitoulia
+ddev exec /var/www/html/scripts/setup_step03__configure_ouitoulia.sh
 
 echo " "
 n "Pulizia" notice
