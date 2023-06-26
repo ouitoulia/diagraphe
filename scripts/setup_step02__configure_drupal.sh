@@ -12,9 +12,9 @@ echo "-- Localizzazione in Italiano ------------------------------------------"
 drush -y config:set system.date country.default IT
 drush -y config:set system.date first_day 1
 drush -y config:set system.date timezone.default Europe/Rome
-drush -y config:set "core.date_format.long pattern 'l, j F Y - H:i'"
-drush -y config:set "core.date_format.medium pattern 'D, d/m/Y - H:i'"
-drush -y config:set "core.date_format.short pattern 'd/m/Y - H:i'"
+drush -y config:set core.date_format.long pattern 'l, j F Y - H:i'
+drush -y config:set core.date_format.medium pattern 'D, d/m/Y - H:i'
+drush -y config:set core.date_format.short pattern 'd/m/Y - H:i'
 
 echo "-- Imposto il numero massimo di caratteri nel sommario -----------------"
 drush -y config:set text.settings default_summary_length 160

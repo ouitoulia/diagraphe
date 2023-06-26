@@ -193,42 +193,42 @@ done
 
 echo " "
 n "Configuro ddev" notice
-echo "-------------------------"
+echo "-----------------------"
 ddev config --project-type=drupal10 --docroot=web --create-docroot
 
 echo " "
 n "Avvio i container" notice
-echo "----------------------------"
+echo "--------------------------"
 ddev start
 
 echo " "
 n "Installo Ouitoulía codebase" notice
-echo "--------------------------------------"
+echo "------------------------------------"
 ddev composer create ouitoulia/diagraphe:${ouitouliaCodebaseInstallVersion} --no-install --no-cache
 
 echo " "
 n "Do i permessi di esecuzione agli script di installazione" notice
-echo "-------------------------------------------------------------------"
+echo "-----------------------------------------------------------------"
 ddev exec chmod -R +x /var/www/html/scripts/
 
 echo " "
 n "Installo le dipendenze della codebase" notice
-echo "------------------------------------------------"
+echo "----------------------------------------------"
 ddev exec /var/www/html/scripts/setup_step01__ouitoulia_codebase.sh
 
 echo " "
 n "Setup iniziale di Drupal" notice
-echo "-----------------------------------"
+echo "---------------------------------"
 ddev exec /var/www/html/scripts/setup_step02__configure_drupal.sh ${adminPass}
 
 echo " "
 n "Setup iniziale di Ouitoulía" notice
-echo "--------------------------------------"
+echo "------------------------------------"
 ddev exec /var/www/html/scripts/setup_step03__configure_ouitoulia.sh
 
 echo " "
 n "Pulizia" notice
-echo "------------------"
+echo "----------------"
 #dev exec drush -y pm:uninstall sunchronizo_lexika lexika migrate dblog bibliotheke
 #ddev composer remove ouitoulia/sunchronizo_lexika ouitoulia/lexika ouitoulia/bibliotheke
 
