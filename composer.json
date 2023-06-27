@@ -25,9 +25,55 @@
     {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "ouitoulia/skenografia-dist",
+        "version": "1.0.33",
+        "type": "drupal-library",
+        "extra": {
+          "installer-name": "ouitoulia-skenografia"
+        },
+        "dist": {
+          "url": "https://github.com/ouitoulia/skenografia/releases/download/1.0.33/skenografia.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "recurser/jquery-simple-color",
+        "version": "1.2.3",
+        "type": "drupal-library",
+        "extra": {
+          "installer-name": "jquery-simple-color"
+        },
+        "dist": {
+          "url": "https://github.com/recurser/jquery-simple-color/archive/master.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "bgrins/spectrum",
+        "version": "1.8.0",
+        "type": "drupal-library",
+        "extra": {
+          "installer-name": "spectrum"
+        },
+        "dist": {
+          "url": "https://github.com/bgrins/spectrum/archive/master.zip",
+          "type": "zip"
+        }
+      }
     }
   ],
   "require": {
+    "bgrins/spectrum": "*",
     "drupal/recommended-project": "^10.1",
     "drupal/admin_toolbar": "^3.3",
     "drupal/address": "^1.12",
@@ -42,7 +88,10 @@
     "drupal/pathauto": "^1.11",
     "drupal/office_hours": "^1.11",
     "drupal/term_reference_tree": "^2.0",
-    "ouitoulia/skenografia": "^1.0"
+    "oomphinc/composer-installers-extender": "^2.0",
+    "ouitoulia/skenografia": "^1.0",
+    "ouitoulia/skenografia-dist": "*",
+    "recurser/jquery-simple-color": "*"
   },
   "require-dev": {
     "drupal/core-dev": "^10.1"
@@ -58,7 +107,8 @@
       "drupal/core-composer-scaffold": true,
       "drupal/core-project-message": true,
       "phpstan/extension-installer": true,
-      "dealerdirect/phpcodesniffer-composer-installer": true
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "oomphinc/composer-installers-extender": true
     },
     "sort-packages": true
   },
