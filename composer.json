@@ -30,13 +30,13 @@
       "type": "package",
       "package": {
         "name": "ouitoulia/skenografia-dist",
-        "version": "1.0.41",
+        "version": "1.0.43",
         "type": "drupal-library",
         "extra": {
           "installer-name": "ouitoulia-skenografia"
         },
         "dist": {
-          "url": "https://github.com/ouitoulia/skenografia/releases/download/1.0.41/skenografia.zip",
+          "url": "https://github.com/ouitoulia/skenografia/releases/download/1.0.43/skenografia.zip",
           "type": "zip"
         }
       }
@@ -89,7 +89,7 @@
     "drupal/office_hours": "^1.11",
     "drupal/term_reference_tree": "^2.0",
     "oomphinc/composer-installers-extender": "^2.0",
-    "ouitoulia/skenografia": "^1.0",
+    "ouitoulia/skenografia": "^1",
     "ouitoulia/skenografia-dist": "*",
     "recurser/jquery-simple-color": "*"
   },
