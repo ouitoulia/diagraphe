@@ -59,30 +59,27 @@ if [[ -d "$folder" ]]; then
 fi
 
 # Filtro le configurazioni basate sull'entity selezionata
-filtered_configurations=$(echo "$field_storage_configs" | grep "$selected_entity" | awk '{print $1}')
+filtered_configurations=$(echo "$field_storage_configs" | awk -F '.' -v entity="$selected_entity" '$3 == entity')
 
 # Creazione della cartella di salvataggio
 mkdir -p "$folder"
 
-# Salvo le configrazioni
+# Salvo le configurazioni
 for config in $filtered_configurations; do
   file="$folder/$config.yml"
-  drush config:get "$config" > "$file"
+  drush_config=$(drush config:get "$config" --format=yaml)
 
-  # Rimuovo la prima riga se inizia con "uuid"
-  sed -i '/^uuid:/d' "$file"
+  # Rimuovo la chiave uuid
+  drush_config=$(echo "$drush_config" | sed '/^uuid:/d')
 
-  # Rimuovo la configurazione "_core" e la riga successiva con "default_config_hash"
-  sed -i '/^_core:/ {
-    :a
-    N
-    /\n  default_config_hash: /!ba
-    s/.*\n//; s/\n.*//
-  }' "$file"
+  # Rimuovo la chiave _core e le righe successive che iniziano con due spazi
+  drush_config=$(echo "$drush_config" | sed '/^_core:/,+1d')
+
+  # Salvo il contenuto serializzato in $file
+  echo "$drush_config" > "$file"
 
   # Mostro lo stato di avanzamento
   echo "Ho salvato ${config}.yml"
 done
 
 echo "Esportazione completata!"
-
