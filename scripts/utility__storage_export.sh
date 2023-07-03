@@ -42,7 +42,6 @@ fi
 
 selected_entity=${entity_list[$(($choice-1))]}
 
-
 # Cartella di salvataggio
 read -p "Inserisci la cartella di salvataggio (vuoto per creare una cartella con il nome dell'entity): " folder
 
@@ -75,11 +74,16 @@ for config in $filtered_configurations; do
   # Rimuovo la chiave _core e le righe successive che iniziano con due spazi
   drush_config=$(echo "$drush_config" | sed '/^_core:/,+1d')
 
-  # Salvo il contenuto serializzato in $file
-  echo "$drush_config" > "$file"
-
-  # Mostro lo stato di avanzamento
-  echo "Ho salvato ${config}.yml"
+  # Verifica se l'estrazione della configurazione è riuscita
+  if [[ -n $drush_config ]]; then
+    # Salvo il contenuto serializzato in $file
+    echo "$drush_config" > "$file"
+    # Mostro lo stato di avanzamento
+    echo "Ho salvato ${config}.yml"
+  else
+    # Se l'estrazione della configurazione ha fallito
+    echo "Errore durante l'estrazione della configurazione: $config"
+  fi
 done
 
 echo "Esportazione completata!"
