@@ -13,9 +13,6 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-      - name: "Current tag"
-        run: "echo \"RELEASE_TAG=${GITHUB_REF#refs/tags/}\" >> $GITHUB_ENV"
-
       - name: "Create release"
         uses: "actions/github-script@v6"
         with:
