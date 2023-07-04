@@ -32,8 +32,8 @@ jobs:
                 tag_name: ${{  github.ref_name }},
               });
 
-              core.exportVariable('RELEASE_ID', response.data.id);
-              core.exportVariable('RELEASE_UPLOAD_URL', response.data.upload_url);
+#              core.exportVariable('RELEASE_ID', response.data.id);
+#              core.exportVariable('RELEASE_UPLOAD_URL', response.data.upload_url);
             } catch (error) {
               core.setFailed(error.message);
             }
