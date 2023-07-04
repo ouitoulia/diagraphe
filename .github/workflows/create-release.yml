@@ -11,9 +11,11 @@ jobs:
     name: "Release"
 
     runs-on: "ubuntu-latest"
+    permissions:
+      contents: write
 
     steps:
-      - name: Create Package dist
-        uses: ncipollo/release-action@v1
+      - uses: actions/checkout@v3
+      - uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
