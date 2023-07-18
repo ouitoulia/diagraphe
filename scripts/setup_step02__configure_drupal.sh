@@ -38,7 +38,7 @@ drush -y pm:install big_pipe datetime file field image inline_form_errors \
 
 drush -y pm:install address entity_reference_display \
   entity_reference_revisions geofield imce field_group focal_point leaflet \
-  office_hours paragraphs term_reference_tree
+  menu_link_attributes office_hours paragraphs term_reference_tree
 
 echo "-- Installo il tema ----------------------------------------------------"
 drush -y pm:enable components
