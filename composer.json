@@ -70,6 +70,18 @@
           "type": "zip"
         }
       }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "toc/toc",
+        "version": "v0.3.2",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://raw.githubusercontent.com/jgallen23/toc/greenkeeper/update-all/dist/toc.min.js",
+          "type": "file"
+        }
+      }
     }
   ],
   "require": {
@@ -89,10 +101,12 @@
     "drupal/pathauto": "^1.11",
     "drupal/recommended-project": "^10.1",
     "drupal/term_reference_tree": "^2.0",
+    "drupal/toc_js": "^2.1",
     "oomphinc/composer-installers-extender": "^2.0",
     "ouitoulia/skenografia": "^1",
     "ouitoulia/skenografia-dist": "*",
-    "recurser/jquery-simple-color": "*"
+    "recurser/jquery-simple-color": "*",
+    "toc/toc": "*"
   },
   "require-dev": {
     "drupal/core-dev": "^10.1"
