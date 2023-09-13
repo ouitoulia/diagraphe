@@ -39,21 +39,3 @@ drush -y pm:install big_pipe datetime file field image inline_form_errors \
 drush -y pm:install address entity_reference_display \
   entity_reference_revisions geofield imce field_group focal_point leaflet \
   menu_link_attributes office_hours paragraphs term_reference_tree toc_js
-
-echo "-- Installo il tema ----------------------------------------------------"
-drush -y pm:enable components
-drush -y theme:enable bootstrap_italia skenografia
-drush -y config:set system.theme default skenografia
-
-drush -y pm:enable bootstrap_italia_image_style \
- bootstrap_italia_paragraph bootstrap_italia_paragraph_accordion \
- bootstrap_italia_paragraph_attachments bootstrap_italia_paragraph_callout \
- bootstrap_italia_paragraph_carousel bootstrap_italia_paragraph_citation \
- bootstrap_italia_paragraph_gallery bootstrap_italia_paragraph_hero \
- bootstrap_italia_paragraph_map bootstrap_italia_paragraph_node_reference \
- bootstrap_italia_paragraph_section bootstrap_italia_paragraph_timeline
-
-drush -y pm:enable bootstrap_italia_views_accordion \
-  bootstrap_italia_views_carousel bootstrap_italia_views_gallery \
-  bootstrap_italia_views_list bootstrap_italia_views_timeline
-
