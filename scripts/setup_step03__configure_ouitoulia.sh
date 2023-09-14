@@ -50,3 +50,7 @@ echo "-- Importo i ruoli dell'entity 'User' ----------------------------------"
 composer require ouitoulia/sunchronizo_prosopon --no-cache
 drush -y pm:install sunchronizo_prosopon
 drush migrate:import scuola_roles
+
+echo "Configuro i permessi ---------------------------------------------------"
+composer require ouitoulia/exesti --no-cache
+drush -y pm:install exesti
