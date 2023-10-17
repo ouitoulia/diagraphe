@@ -4,7 +4,7 @@
 ![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/ouitoulia/diagraphe/drupal/recommended-project?style=for-the-badge)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/ouitoulia/diagraphe?style=for-the-badge)
 
-[Diagraphè](https://www.grecoantico.com/dizionario-greco-antico.php?lemma=DIAGRAFH100) è un modello che installa la distribuzione Drupal Ouitoulìa
+[Diagraphè](https://www.grecoantico.com/dizionario-greco-antico.php?lemma=DIAGRAFH100) è un modello che installa la distribuzione Drupal Ouitoulía
 
 ## Installazione
 Per installare il CMS Ouitoulía procedi così
