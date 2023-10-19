@@ -81,7 +81,8 @@
     "oomphinc/composer-installers-extender": "^2.0",
     "ouitoulia/skenografia": "^1",
     "recurser/jquery-simple-color": "*",
-    "toc/toc": "*"
+    "toc/toc": "*",
+    "wikimedia/composer-merge-plugin": "^2.1"
   },
   "require-dev": {
     "drupal/core-dev": "^10.1"
@@ -98,11 +99,25 @@
       "drupal/core-project-message": true,
       "phpstan/extension-installer": true,
       "dealerdirect/phpcodesniffer-composer-installer": true,
-      "oomphinc/composer-installers-extender": true
+      "oomphinc/composer-installers-extender": true,
+      "wikimedia/composer-merge-plugin": true
     },
     "sort-packages": true
   },
   "extra": {
+    "merge-plugin": {
+      "include": [
+        "web/themes/contrib/skenografia/composer.libraries.json"
+      ],
+      "recurse": true,
+      "replace": false,
+      "ignore-duplicates": false,
+      "merge-dev": true,
+      "merge-extra": false,
+      "merge-extra-deep": false,
+      "merge-replace": true,
+      "merge-scripts": false
+    },
     "drupal-scaffold": {
       "locations": {
         "web-root": "web/"
