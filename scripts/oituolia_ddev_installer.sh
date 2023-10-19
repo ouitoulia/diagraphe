@@ -204,6 +204,7 @@ ddev start
 echo " "
 n "Installo Ouitoulía codebase" notice
 echo "------------------------------------"
+ddev composer clear-cache
 ddev composer create ouitoulia/diagraphe:${ouitouliaCodebaseInstallVersion} --no-install --no-cache --no-interaction
 
 echo " "
