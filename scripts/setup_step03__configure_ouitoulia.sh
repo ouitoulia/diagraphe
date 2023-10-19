@@ -34,17 +34,13 @@ echo "-- Installo i tipi di Media gestiti ------------------------------------"
 composer require ouitoulia/bibliotheke --no-cache
 drush -y pm:install bibliotheke
 
-echo "-- Installo i campi usati dalle entità Node ----------------------------"
-composer require ouitoulia/themethla --no-cache
-drush -y pm:install themethla
-
-echo "-- Installo il tipo di contenuto Persona -------------------------------"
+echo "-- Installo il modulo utenti -------------------------------------------"
 composer require ouitoulia/prosopon --no-cache
 drush -y pm:install prosopon
 
-echo "-- Installo il tipo di contenuto Luogo ---------------------------------"
-composer require ouitoulia/topographia --no-cache
-drush -y pm:install topographia
+echo "-- Installo i campi usati dalle entità Node ----------------------------"
+composer require ouitoulia/themethla --no-cache
+drush -y pm:install themethla
 
 echo "-- Importo i ruoli dell'entity 'User' ----------------------------------"
 composer require ouitoulia/sunchronizo_prosopon --no-cache
