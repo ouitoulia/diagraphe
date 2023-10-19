@@ -29,13 +29,5 @@ echo "-- Solo gli amministratori possono registrare nuovi utenti -------------"
 drush -y config:set user.settings register admin_only
 
 echo "-- Installo e configuro i moduli base ----------------------------------"
-drush -y pm:install field pathauto
+drush -y pm:install field pathauto entity_reference_display menu_link_attributes
 drush -y config:set pathauto.settings punctuation.slash 1
-
-drush -y pm:install big_pipe datetime file field image inline_form_errors \
-  media media_library node options responsive_image taxonomy telephone \
-  text views
-
-drush -y pm:install address conditional_fields entity_reference_display \
-  entity_reference_revisions geofield imce field_group focal_point leaflet \
-  menu_link_attributes office_hours paragraphs term_reference_tree toc_js

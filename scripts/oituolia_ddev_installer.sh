@@ -204,7 +204,7 @@ ddev start
 echo " "
 n "Installo Ouitoulía codebase" notice
 echo "------------------------------------"
-ddev composer create ouitoulia/diagraphe:${ouitouliaCodebaseInstallVersion} --no-install --no-cache
+ddev composer create ouitoulia/diagraphe:${ouitouliaCodebaseInstallVersion} --no-install --no-cache --no-interaction
 
 echo " "
 n "Do i permessi di esecuzione agli script di installazione" notice
