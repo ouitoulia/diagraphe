@@ -35,18 +35,18 @@ echo "-- Installo i tipi di Media gestiti ------------------------------------"
 drush -y pm:install bibliotheke
 
 echo "-- Installo il modulo utenti -------------------------------------------"
-composer require ouitoulia/prosopon --no-cache
+#composer require ouitoulia/prosopon --no-cache
 drush -y pm:install prosopon
 
 echo "-- Installo i campi usati dalle entità Node ----------------------------"
-composer require ouitoulia/themethla --no-cache
+#composer require ouitoulia/themethla --no-cache
 drush -y pm:install themethla
 
 echo "-- Importo i ruoli dell'entity 'User' ----------------------------------"
-composer require ouitoulia/sunchronizo_prosopon --no-cache
+#composer require ouitoulia/sunchronizo_prosopon --no-cache
 drush -y pm:install sunchronizo_prosopon
 drush migrate:import scuola_roles
 
 echo "Configuro i permessi ---------------------------------------------------"
-composer require ouitoulia/exesti --no-cache
+#composer require ouitoulia/exesti --no-cache
 drush -y pm:install exesti

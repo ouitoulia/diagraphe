@@ -35,10 +35,11 @@
     "drupal/pathauto": "^1",
     "drupal/recommended-project": "^10.1",
     "oomphinc/composer-installers-extender": "^2.0",
-    "ouitoulia/bibliotheke": "^1",
-    "ouitoulia/lexika": "^1",
+    "ouitoulia/exesti": "^1",
     "ouitoulia/skenografia": "^1",
     "ouitoulia/sunchronizo_lexika": "^1",
+    "ouitoulia/sunchronizo_prosopon": "^1",
+    "ouitoulia/themethla": "^2",
     "wikimedia/composer-merge-plugin": "^2.1"
   },
   "require-dev": {
