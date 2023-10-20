@@ -24,6 +24,9 @@ drush -y pm:install prosopon
 echo "-- Installo i campi usati dalle entità Node ----------------------------"
 drush -y pm:install themethla
 
+# Fix node_reference module for minimal profile
+drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/bootstrap_italia/modules/bootstrap_italia_paragraph_node_reference/config/optional"
+
 echo "-- Importo i ruoli dell'entity 'User' ----------------------------------"
 drush -y pm:install sunchronizo_prosopon
 drush migrate:import scuola_roles
