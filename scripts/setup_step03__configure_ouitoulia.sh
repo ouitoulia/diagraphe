@@ -4,11 +4,11 @@
 # Run this script in the location where your composer.json is.
 
 echo "-- Installo il tema ----------------------------------------------------"
-drush -y pm:enable components
+drush -y pm:install components big_pipe inline_form_errors responsive_image
 drush -y theme:enable bootstrap_italia skenografia
 drush -y config:set system.theme default skenografia
 
-#drush -y pm:enable bootstrap_italia_image_style \
+#drush -y pm:install bootstrap_italia_image_style \
 # bootstrap_italia_paragraph bootstrap_italia_paragraph_accordion \
 # bootstrap_italia_paragraph_attachments bootstrap_italia_paragraph_callout \
 # bootstrap_italia_paragraph_carousel bootstrap_italia_paragraph_citation \
@@ -16,22 +16,22 @@ drush -y config:set system.theme default skenografia
 # bootstrap_italia_paragraph_map bootstrap_italia_paragraph_node_reference \
 # bootstrap_italia_paragraph_section bootstrap_italia_paragraph_timeline
 
-#drush -y pm:enable bootstrap_italia_views_accordion \
+#drush -y pm:install bootstrap_italia_views_accordion \
 #  bootstrap_italia_views_carousel bootstrap_italia_views_gallery \
 #  bootstrap_italia_views_list bootstrap_italia_views_timeline
 
 
 echo "-- Installo i vocabolari -----------------------------------------------"
-composer require ouitoulia/lexika --no-cache
-drush -y en lexika
+#composer require ouitoulia/lexika --no-cache
+drush -y pm:install lexika
 
 echo "-- Importo le voci di tassonomia ---------------------------------------"
-composer require ouitoulia/sunchronizo_lexika --no-cache
-drush -y en sunchronizo_lexika
+#composer require ouitoulia/sunchronizo_lexika --no-cache
+drush -y pm:install sunchronizo_lexika
 drush migrate:import --all
 
 echo "-- Installo i tipi di Media gestiti ------------------------------------"
-composer require ouitoulia/bibliotheke --no-cache
+#composer require ouitoulia/bibliotheke --no-cache
 drush -y pm:install bibliotheke
 
 echo "-- Installo il modulo utenti -------------------------------------------"
