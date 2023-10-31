@@ -21,7 +21,7 @@ while IFS= read -r line; do
   content_types+=("$content_type")
 done <<< "$filtered_lines"
 
-echo "Quale content type desideri esportare?"
+echo "Quale content type desideri esportare? [numero]: "
 select chosen_type in "${content_types[@]}"; do
   if [[ -n $chosen_type ]]; then
     echo "Hai scelto il content type: $chosen_type"
