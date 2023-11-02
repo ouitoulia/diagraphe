@@ -12,13 +12,93 @@ digraph ouitoulia {
     ];
     edge [];
 
+    subgraph address {
+        node [color = purple];
+
+        "address" [
+            label = "<address> Address (address)|\
+                        Via | CAP | Provincia | ..."
+        ];
+
+    }
+
+    subgraph entityMedia {
+        node [color = red];
+
+        "media" [
+            label = "<mediaBundle> Media Bundles (entity:media)|\
+                    Immagine | Video | Audio | ..."
+        ];
+
+    }
+
+    subgraph entityParagraph {
+        node [color = blue];
+
+        "paragraph" [
+            label = "<paragraphBundle> Paragraph Bundles (entity:paragraph)|\
+                    Content | Attachments | Accordion | Carousel | Gallery |..."
+        ];
+
+    }
+
     subgraph entityTaxonomy {
         node [color = green];
         edge [color = green];
 
+        "taxonomyArgomenti" [
+        label = "<taxonomyBundle> Le parole della scuola (taxonomy_term:bundle:argomenti) |\
+                    Item 1|\
+                    Item 2|\
+                    Item 3"
+        ];
+
+        "taxonomyAttributiDeiLuoghi" [
+        label = "<taxonomyBundle> Attributi dei luoghi (taxonomy_term:bundle:attributi_dei_luoghi) |\
+                    Parcheggio|\
+                    Parcheggio Acccessibile|\
+                    Ingresso|\
+                    Ingresso acccessibile"
+        ];
+
+        "taxonomyAzioni" [
+        label = "<taxonomyBundle> Materie (taxonomy_term:bundle:azioni) |\
+                    Compila|\
+                    Scarica|\
+                    Registrati|\
+                    Iscriviti|\
+                    Accedi|\
+                    Vai al sito|\
+                    Visualizza"
+        ];
+
+        "taxonomyCosaServe" [
+        label = "<taxonomyBundle> Cosa serve (taxonomy_term:bundle:cosa_serve) |\
+                    Documento|\
+                    Pagamento|\
+                    Iscrizione|\
+                    Firma|\
+                    ..."
+        ];
+
+        "taxonomyDestinazioneUso" [
+        label = "<taxonomyBundle> Cosa serve (taxonomy_term:bundle:destinazione_uso) |\
+                    Item 1|\
+                    Item 2|\
+                    Item 3|\
+                    ..."
+        ];
+
+        "taxonomyTipologiaLicenze" [
+        label = "<taxonomyBundle> Tipologia licenze (taxonomy_term:bundle:tipologia_licenze) |\
+                    SPDX: CC-BY-4.0|\
+                    SPD: CC-BY-SA-4.0|\
+                    Creative Commons Zero|\
+                    ..."
+        ];
 
         "taxonomyMaterie" [
-        label = "<taxonomyBundle> Materie (taxonomy_term:bundle:materie) |\
+            label = "<taxonomyBundle> Materie (taxonomy_term:bundle:materie) |\
                     Item 1|\
                     Item 2|\
                     Item 3"
@@ -35,41 +115,71 @@ digraph ouitoulia {
                   Collaboratore",
         ];
 
+        "taxonomyTipologiaAutenticazioni" [
+        label = "<taxonomyBundle> Tipologia autenticazioni (taxonomy_term:bundle:tipologia_autenticazioni) |\
+                    SPID|\
+                    CIE|\
+                    Username/Password"
+        ];
+
         "taxonomyTipologiaIncarichi" [
             label = "<taxonomyBundle> Tipologia incarichi (taxonomy_term:bundle:tipologia_incarichi) |\
                     Determinato|\
                     Indeterminato"
         ];
 
+        "taxonomyTipologiaLuoghi" [
+        label = "<taxonomyBundle> Tipologia luoghi (taxonomy_term:bundle:tipologia_luoghi) |\
+                  Altro|\
+                  Auditorium|\
+                  Aula magna|\
+                  Biiblioteca|\
+                  Edificio scolastico|\
+                  Laboratorio|\
+                  Mensa|\
+                  Palestra|\
+                  Spazio all'aperto|\
+                  Teatro",
+        ];
+
         "taxonomyTipologiaPosti" [
-        label = "<taxonomyBundle> Tipologia posti (taxonomy_term:bundle:tipologia_posti) |\
+            label = "<taxonomyBundle> Tipologia posti (taxonomy_term:bundle:tipologia_posti) |\
                     Comune|\
                     Potenziamento|\
                     Sostegno"
         ];
 
+        "taxonomyTipologiaServizi" [
+        label = "<taxonomyBundle> Tipologia servizi (taxonomy_term:bundle:tipologia_servizi) |\
+                    Servizi per il personale scolastico|\
+                    Servizi per le famiglie e studenti|\
+                    Servizi per i fornitori e le aziende"
+        ];
+
+        "taxonomyTipologiaStrutture" [
+        label = "<taxonomyBundle> Tipologia strutture (taxonomy_term:bundle:tipologia_strutture) |\
+                    Altro|\
+                    Associazione scolastica|\
+                    Commissione|\
+                    Dipartimento|\
+                    Dirigenza scolastica|\
+                    Scuola/Itituto|\
+                    Organo collegiale|\
+                    Segreteria"
+        ];
+
         "taxonomyTipologiaSupplenze" [
-        label = "<taxonomyBundle> Tipologia supplenze (taxonomy_term:bundle:tipologia_incarichi) |\
+            label = "<taxonomyBundle> Tipologia supplenze (taxonomy_term:bundle:tipologia_incarichi) |\
                     Item 1|\
                     Item 2|\
                     Item 3"
         ];
     }
 
-    subgraph entityParagraph {
-        node [color = blue];
-
-        "paragraph" [
-            label = "<paragraphBundle> Paragraph Bundles (entity:paragraph)|\
-                    Content | Attachments | Accordion | Carousel | Gallery |..."
-        ];
-
-    }
-
     subgraph entityNode {
         node [color = black];
 
-        /*** Tipo di contenuto "Persona" ***********************************************/
+        /*** Tipo di contenuto "Persona" ************************************************/
         "nodePersona" [
             color = orange,
             label = "<nodeBundle> Persona (node:bundle:persona)| \
@@ -99,40 +209,136 @@ digraph ouitoulia {
                     <field_codice_fiscale> Codice fiscale (field_codice_fiscale)",
         ];
         "nodePersona": field_ruolo_persona -> "taxonomyRuoliPersona": taxonomyBundle [
-            id = 1,
-            label = "1..*",
+            label = "1..n",
             color = green,
             arrowhead = crow,
         ];
         "nodePersona": field_materie -> "taxonomyMaterie": taxonomyBundle [
-            id = 1,
-            label = "1..*",
+            label = "1..n",
             color = green,
             arrowhead = crow,
         ];
         "nodePersona": field_extra_info -> "paragraph": paragraphBundle [
-            id = 1,
-            label = "1..*",
+            label = "1..n : * ",
             color = blue,
             arrowhead = crow,
         ];
         "nodePersona": field_tipologia_incarico -> "taxonomyTipologiaIncarichi": taxonomyBundle [
-            id = 1,
             label = "1..1",
             color = green,
             arrowhead = tee,
         ];
         "nodePersona": field_tipologia_posto -> "taxonomyTipologiaPosti": taxonomyBundle [
-            id = 1,
             label = "1..1",
             color = green,
             arrowhead = tee,
         ];
         "nodePersona": field_tipologia_supplenza -> "taxonomyTipologiaSupplenze": taxonomyBundle [
-            id = 1,
             label = "1..1",
             color = green,
             arrowhead = tee,
         ];
+
+        /*** Tipo di contenuto "Luogo" **************************************************/
+        "nodeLuogo" [
+            label = "<nodeBundle> Luogo (node:bundle:luogo)|\
+                    <title> Nome del luogo (title) *|\
+                    <field_abstract> Descrizione breve (field_abstract) *|\
+                    <field_argomenti> Argomenti (field_argomenti) *|\
+                    <field_tipologia_luogo> Tipologia luogo (field_tipologia_luogo) *|\
+                    <field_copertina> Immagine in evidenza (field_copertina) *|\
+                    <field_video> Video (field_video)|\
+                    <field_galleria_immagini> Galleria immagini (field_galleria_immagini)|\
+                    <body> Descrizione estesa (body)|\
+                    <field_elementi_di_interesse> Elementi di interesse del luogo (field_elementi_di_interesse)|\
+                    <field_luoghi> Parte di (field_luoghi)|\
+                    <field_indirizzo> Indirizzo (field_indirizzo)|\
+                    <field_coordinate_geograficche> Posizione GPS (field_coordinate_geograficche) *|\
+                    <field_orario_pubblico> Orario per il pubblico *|\
+                    <field_email> Email (field_email)|\
+                    <field_telefono> Telefono (field_telefono)|\
+                    <field_attributi_luogo> Modalità di accesso (field_attributi_luogo)|\
+                    Servizi presenti nel luogo (view_servizi?idLuogo)|\
+                    Il luogo è sede di (view_strutture_organizzative?idLuogo&sede)|\
+                    Strutture che gestiscono il luogo (view_strutture_organizzative?idLuogo&struttura)|\
+                    Persone che gestiscono il luogo (view_persone?idLuogo)|\
+                    Riferimento telefonico (view_struttura_responsabile)|\
+                    Riferimento email (view_struttura_responsabile)|\
+                    <field_extra_info> Ulteriori informazioni (field_extra_info)|\
+                    <field_prenotabile> Spazio prenotabile (field_prenotabile)|\
+                    <field_anno_costruzione> Anno di costruzione (field_anno_costruzione)|\
+                    <field_numero_piani> Numero piani (field_numero_piani)|\
+                    <field_posti> Posti a sedere (field_posti)|\
+                    Metadati (display)|\
+                    Correlati novità (views)|\
+                    <field_codice_identificativo> Codice edificio (field_codice_identificativo)|\
+                    <field_codice_catastale_comune> Codice comune (field_codice_catastale_comune)|\
+                    Desccrizione codice comune|\
+                    <field_uso_sccolastico> Uso scolastico (field_uso_sccolastico)|\
+                    <field_destinazione_uso> Altri usi (field_destinazione_uso)|\
+                    <field_anno_adattamento> Anno adattamento (field_anno_adattamento)|\
+                    <field_superficie_area_totale> Superficie area totale (field_superficie_area_totale)|\
+                    <field_superficie_area_libera> Superficie area libera (field_superficie_area_libera)|\
+                    <field_volume> Volume (field_volume)",
+        ];
+        "nodeLuogo": field_argomenti -> "taxonomyArgomenti": taxonomyBundle [
+            label = "1..n",
+            color = green,
+            arrowhead = crow,
+        ];
+        "nodeLuogo": field_tipologia_luogo -> "taxonomyTipologiaLuoghi": taxonomyBundle [
+            label = "1..1",
+            color = green,
+            arrowhead = tee,
+        ];
+        "nodeLuogo": field_copertina -> "media": mediaBundle [
+            label = "1..1 : image",
+            color = red,
+            arrowhead = tee,
+        ];
+        "nodeLuogo": field_video -> "media": mediaBundle [
+            label = "1..n : video",
+            color = red,
+            arrowhead = crow,
+        ];
+        "nodeLuogo": field_galleria_immagini -> "media": mediaBundle [
+            label = "1..n : image",
+            color = red,
+            arrowhead = crow,
+        ];
+        "nodeLuogo": field_elementi_di_interesse -> "paragraph": paragraphBundle [
+            label = "1..n : content, node_reference",
+            color = blue,
+            arrowhead = crow,
+        ];
+        "nodeLuogo": field_luoghi -> "nodeLuogo": nodeBundle [
+            label = "1..1",
+            color = black,
+            arrowhead = tee,
+        ];
+        "nodeLuogo": field_indirizzo -> "address": address [
+            label = "1..1",
+            color = purple,
+            arrowhead = tee,
+        ];
+        "nodeLuogo": field_attributi_luogo -> "taxonomyAttributiDeiLuoghi": taxonomyBundle [
+            label = "1..n",
+            color = green,
+            arrowhead = crow,
+        ];
+        "nodeLuogo": field_extra_info -> "paragraph": paragraphBundle [
+            label = "1..n : * ",
+            color = blue,
+            arrowhead = crow,
+        ];
+        "nodeLuogo": field_destinazione_uso -> "taxonomyDestinazioneUso": taxonomyBundle [
+            label = "1..1",
+            color = green,
+            arrowhead = tee,
+        ];
+
+        /*** Tipo di contenuto "Struttura organizzativa" ********************************/
+
+        /*** Tipo di contenuto "Servizio" ***********************************************/
     }
 }
