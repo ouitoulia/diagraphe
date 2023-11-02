@@ -42,3 +42,5 @@ jobs:
           git add diagramma-er-gv.svg
           git commit -m "Generate SVG from DOT"
           git push origin
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
