@@ -42,6 +42,6 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git add diagramma-er-gv.svg
+          git add docs/diagramma-er-gv.svg
           git commit -m "Generate SVG from DOT"
           git push origin
