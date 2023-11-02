@@ -1,0 +1,35 @@
+name: Generate SVG from DOT and commit
+
+on:
+  push:
+    paths:
+      - 'docs/diagramma-er.gv.dot'
+
+jobs:
+  generate-svg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Graphviz
+        shell: bash
+        run: |
+          sudo apt update
+          sudo apt -f install
+          sudo apt install -y graphviz
+
+      - name: Generate SVG from DOT
+        run: dot -Tsvg docs/diagramma-er.gv.dot -o diagramma-er.gv.svg
+
+      - name: Configure Git
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"              
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add diagramma-er.gv.svg
+          git commit -m "Generate SVG from DOT"
+          git push origin
