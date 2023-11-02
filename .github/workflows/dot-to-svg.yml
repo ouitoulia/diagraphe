@@ -8,6 +8,9 @@ on:
 jobs:
   generate-svg:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -17,8 +20,6 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"              
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Cache Graphviz installation
         id: cache-graphviz
@@ -43,6 +44,4 @@ jobs:
         run: |
           git add diagramma-er-gv.svg
           git commit -m "Generate SVG from DOT"
-          git push origin ${GITHUB_REF#refs/heads/}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git push origin
