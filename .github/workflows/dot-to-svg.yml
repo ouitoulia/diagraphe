@@ -18,6 +18,15 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
+      - name: Cache Graphviz installation
+        id: cache-graphviz
+        uses: actions/cache@v2
+        with:
+          path: /var/cache/apt/archives
+          key: graphviz-${{ runner.os }}-${{ hashFiles('**/apt-get.lock') }}
+          restore-keys: |
+            graphviz-${{ runner.os }}-
+
       - name: Install Graphviz
         shell: bash
         run: |
