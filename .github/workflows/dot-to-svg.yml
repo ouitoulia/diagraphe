@@ -23,7 +23,7 @@ jobs:
 
       - name: Cache Graphviz installation
         id: cache-graphviz
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: /var/cache/apt/archives
           key: graphviz-${{ runner.os }}-${{ hashFiles('**/apt-get.lock') }}
