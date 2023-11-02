@@ -17,6 +17,8 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"              
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Cache Graphviz installation
         id: cache-graphviz
@@ -41,6 +43,6 @@ jobs:
         run: |
           git add diagramma-er-gv.svg
           git commit -m "Generate SVG from DOT"
-          git push
+          git push origin ${GITHUB_REF#refs/heads/}
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
