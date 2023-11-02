@@ -3,7 +3,7 @@ name: Generate SVG from DOT and commit
 on:
   push:
     paths:
-      - 'docs/diagramma-er.gv.dot'
+      - 'docs/diagramma-er.dot'
 
 jobs:
   generate-svg:
@@ -26,10 +26,10 @@ jobs:
           sudo apt install -y graphviz
 
       - name: Generate SVG from DOT
-        run: dot -Tsvg docs/diagramma-er.gv.dot -o diagramma-er.gv.svg
+        run: dot -Tsvg docs/diagramma-er.dot -o diagramma-er-gv.svg
 
       - name: Commit and push changes
         run: |
-          git add diagramma-er.gv.svg
+          git add diagramma-er-gv.svg
           git commit -m "Generate SVG from DOT"
           git push origin
