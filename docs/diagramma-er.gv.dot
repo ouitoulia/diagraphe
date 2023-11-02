@@ -1,0 +1,138 @@
+digraph ouitoulia {
+    fontname = "Titillium web,Open Sans,sans-serif"
+    graph [
+        rankdir = "LR",
+        newrank = true,
+        nodesep = 1,
+        ranksep = 1,
+    ];
+    node [
+        fontsize = "16",
+        shape = "record",
+    ];
+    edge [];
+
+    subgraph entityTaxonomy {
+        node [color = green];
+        edge [color = green];
+
+
+        "taxonomyMaterie" [
+        label = "<taxonomyBundle> Materie (taxonomy_term:bundle:materie) |\
+                    Item 1|\
+                    Item 2|\
+                    Item 3"
+        ];
+
+        "taxonomyRuoliPersona" [
+            label = "<taxonomyBundle> Ruoli persona (taxonomy_term:bundle:ruoli_persona) |\
+                  Dirigente scolastico|\
+                  Personale docente|\
+                  Personale non docente|\
+                  DSGA|\
+                  Personale amministrativo|\
+                  Personale tecnico|\
+                  Collaboratore",
+        ];
+
+        "taxonomyTipologiaIncarichi" [
+            label = "<taxonomyBundle> Tipologia incarichi (taxonomy_term:bundle:tipologia_incarichi) |\
+                    Determinato|\
+                    Indeterminato"
+        ];
+
+        "taxonomyTipologiaPosti" [
+        label = "<taxonomyBundle> Tipologia posti (taxonomy_term:bundle:tipologia_posti) |\
+                    Comune|\
+                    Potenziamento|\
+                    Sostegno"
+        ];
+
+        "taxonomyTipologiaSupplenze" [
+        label = "<taxonomyBundle> Tipologia supplenze (taxonomy_term:bundle:tipologia_incarichi) |\
+                    Item 1|\
+                    Item 2|\
+                    Item 3"
+        ];
+    }
+
+    subgraph entityParagraph {
+        node [color = blue];
+
+        "paragraph" [
+            label = "<paragraphBundle> Paragraph Bundles (entity:paragraph)|\
+                    Content | Attachments | Accordion | Carousel | Gallery |..."
+        ];
+
+    }
+
+    subgraph entityNode {
+        node [color = black];
+
+        /*** Tipo di contenuto "Persona" ************************************************/
+        "nodePersona" [
+            color = orange,
+            label = "<nodeBundle> Persona (node:bundle:persona)| \
+                    <field_nome> Nome (field_nome) *|\
+                    <field_cognome> Cognome (field_cognome) *|\
+                    <field_ritratto> Foto della persona (field_ritratto)|\
+                    <field_ruolo_persona> Ruolo nell'organizzazione (field_ruolo_persona) *|\
+                    Ruolo (secondo livello) |\
+                    <field_abstract> Biografia (field_abstract) *|\
+                    Dove lavora (view_luoghi?idPersona)|\
+                    Strutture di cui la persona è responsabile (view_strutture?idPersona)|\
+                    <field_materie> Materie (field_materie)|\
+                    Schede didattiche (view_schede_didattiche?idPersona)|\
+                    Progetti (view_progetti?idPersona)|\
+                    Documenti (view_documenti?idPersona)|\
+                    <field_extra_info> Ulteriori informazioni (field_extra_info)|\
+                    <field_telefono> Numero di telefono pubblico (field_telefono)|\
+                    <field_email> Indirizzo email pubblico (field_email)|\
+                    Metadati (display)|\
+                    Corellati (view_related?idPersona)|\
+                    <field_tipologia_incarico> Tipologia incarico (field_tipologia_incarico) *|\
+                    <field_data_fine> Darata incarico (field_data_fine) *|\
+                    <field_tipologia_posto> Tipo posto (field_tipologia_posto)|\
+                    <field_tipologia_supplenza> Tipo supplenza (field_tipologia_supplenza) *|\
+                    <field_genere> Genere (field_genere)|\
+                    <field_data_nascita> Data di nascita (field_data_nascita)|\
+                    <field_codice_fiscale> Codice fiscale (field_codice_fiscale)",
+        ];
+        "nodePersona": field_ruolo_persona -> "taxonomyRuoliPersona": taxonomyBundle [
+            id = 1,
+            label = "1..*",
+            color = green,
+            arrowhead = crow,
+        ];
+        "nodePersona": field_materie -> "taxonomyMaterie": taxonomyBundle [
+            id = 1,
+            label = "1..*",
+            color = green,
+            arrowhead = crow,
+        ];
+        "nodePersona": field_extra_info -> "paragraph": paragraphBundle [
+            id = 1,
+            label = "1..*",
+            color = blue,
+            arrowhead = crow,
+        ];
+        "nodePersona": field_tipologia_incarico -> "taxonomyTipologiaIncarichi": taxonomyBundle [
+            id = 1,
+            label = "1..1",
+            color = green,
+            arrowhead = tee,
+        ];
+        "nodePersona": field_tipologia_posto -> "taxonomyTipologiaPosti": taxonomyBundle [
+            id = 1,
+            label = "1..1",
+            color = green,
+            arrowhead = tee,
+        ];
+        "nodePersona": field_tipologia_supplenza -> "taxonomyTipologiaSupplenze": taxonomyBundle [
+            id = 1,
+            label = "1..1",
+            color = green,
+            arrowhead = tee,
+        ];
+    }
+}
