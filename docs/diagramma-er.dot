@@ -69,7 +69,7 @@ digraph ouitoulia {
     subgraph entityNode {
         node [color = black];
 
-        /*** Tipo di contenuto "Persona" ***********************************************/
+        /*** Tipo di contenuto "Persona" ************************************************/
         "nodePersona" [
             color = orange,
             label = "<nodeBundle> Persona (node:bundle:persona)| \
