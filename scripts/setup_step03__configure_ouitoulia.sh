@@ -4,7 +4,8 @@
 # Run this script in the location where your composer.json is.
 
 echo "-- Installo il tema ----------------------------------------------------"
-drush -y pm:install components big_pipe inline_form_errors responsive_image
+drush -y pm:install components big_pipe inline_form_errors responsive_image \
+         easy_breadcrumb twig_tweak
 drush -y theme:enable bootstrap_italia skenografia
 drush -y config:set system.theme default skenografia
 
