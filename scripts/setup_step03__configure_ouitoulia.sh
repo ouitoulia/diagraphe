@@ -19,16 +19,16 @@ drush migrate:import --all
 echo "-- Installo i tipi di Media gestiti ------------------------------------"
 drush -y pm:install bibliotheke
 
-echo "-- Installo il modulo utenti -------------------------------------------"
-drush -y pm:install prosopon
-
 echo "-- Installo i campi usati dalle entità Node ----------------------------"
 drush -y pm:install themethla
 
-# Fix node_reference module for minimal profile
-drush -y pm:install config
-drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/bootstrap_italia/modules/bootstrap_italia_paragraph_node_reference/config/optional"
-drush -y pm:uninstall config
+echo "-- Installo il modulo utenti -------------------------------------------"
+drush -y pm:install prosopon
+
+## Fix node_reference module for minimal profile
+#drush -y pm:install config
+#drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/bootstrap_italia/modules/bootstrap_italia_paragraph_node_reference/config/optional"
+#drush -y pm:uninstall config
 
 echo "-- Importo i ruoli dell'entity 'User' ----------------------------------"
 drush -y pm:install sunchronizo_prosopon
