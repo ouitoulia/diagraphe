@@ -24,7 +24,7 @@ drush -y pm:install prosopon
 # Fix node_reference module for minimal profile
 drush -y pm:install config
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/bootstrap_italia/modules/bootstrap_italia_paragraph_node_reference/config/optional"
-drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/contrib/skenografia/config/update/"
+drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/skenografia/config/update/"
 drush -y pm:uninstall config
 
 echo "-- Importo le voci di tassonomia ---------------------------------------"
