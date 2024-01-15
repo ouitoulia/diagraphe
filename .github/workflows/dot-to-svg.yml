@@ -15,6 +15,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Check if SVG file is modified
+        id: svg-changed
+        run: |
+          SVG_CHANGED=$(git diff --name-only HEAD^ HEAD | grep 'docs/diagramma-er-gv.svg' || true)
+          echo "SVG_CHANGED=${SVG_CHANGED}" >> $GITHUB_ENV
+
+      - name: Exit if SVG not changed
+        run: exit 0
+        if: env.SVG_CHANGED == ''
+
+      - name: Generate SVG from DOT
+        run: dot -Tsvg docs/diagramma-er.dot -o docs/diagramma-er-gv.svg
+
       - name: Configure Git
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"              
@@ -36,9 +49,6 @@ jobs:
           sudo apt update
           sudo apt -f install
           sudo apt install -y graphviz
-
-      - name: Generate SVG from DOT
-        run: dot -Tsvg docs/diagramma-er.dot -o docs/diagramma-er-gv.svg
 
       - name: Commit and push changes
         run: |
