@@ -9,6 +9,9 @@ drush -y pm:install components big_pipe inline_form_errors responsive_image \
 drush -y theme:enable bootstrap_italia skenografia
 drush -y config:set system.theme default skenografia
 
+echo "-- Configuro il text editor --------------------------------------------"
+drush -y pm:install editor ckeditor5 bootstrap_italia_text_editor2
+
 echo "-- Installo i vocabolari -----------------------------------------------"
 drush -y pm:install lexika
 
