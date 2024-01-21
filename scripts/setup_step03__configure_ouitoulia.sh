@@ -18,11 +18,14 @@ drush -y pm:install lexika
 echo "-- Installo i tipi di Media gestiti ------------------------------------"
 drush -y pm:install bibliotheke
 
+echo "-- Installo il modulo utenti -------------------------------------------"
+drush -y pm:install prosopon
+
 echo "-- Installo i campi usati dalle entità Node ----------------------------"
 drush -y pm:install themethla
 
-echo "-- Installo il modulo utenti -------------------------------------------"
-drush -y pm:install prosopon
+echo "-- Installo viste e blocchi --------------------------------------------"
+drush -y pm:install prosis
 
 # Fix node_reference module for minimal profile
 drush -y pm:install config

@@ -38,6 +38,7 @@
     "drupal/twig_tweak": "^3.2",
     "oomphinc/composer-installers-extender": "^2.0",
     "ouitoulia/exesti": "^1",
+    "ouitoulia/prosis": "^1",
     "ouitoulia/skenografia": "^1",
     "ouitoulia/sunchronizo": "^1",
     "ouitoulia/themethla": "^2",
