@@ -2,7 +2,7 @@
   "name": "ouitoulia/diagraphe",
   "description": "Diagraphè è un modello che installa la distribuzione Drupal Ouitoulía",
   "type": "project",
-  "license": "GPL-3.0-only",
+  "license": "AGPL-3.0-only",
   "authors": [
     {
       "name": "Pietro Arturo Panetta",
