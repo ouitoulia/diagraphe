@@ -24,18 +24,18 @@ drush -y pm:install prosopon
 echo "-- Installo i campi usati dalle entità Node ----------------------------"
 drush -y pm:install themethla
 
-echo "-- Installo viste e blocchi --------------------------------------------"
-drush -y pm:install prosis
-
 # Fix node_reference module for minimal profile
 drush -y pm:install config
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/bootstrap_italia/modules/bootstrap_italia_paragraph_node_reference/config/optional"
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/skenografia/config/update/"
 drush -y pm:uninstall config
 
-echo "-- Importo le voci di tassonomia ---------------------------------------"
+echo "-- Importo i dati ------------------------------------------------------"
 drush -y pm:install sunchronizo
 drush migrate:import --all
+
+echo "-- Installo viste e blocchi --------------------------------------------"
+drush -y pm:install prosis
 
 echo "Configuro i permessi ---------------------------------------------------"
 drush -y pm:install exesti
