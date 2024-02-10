@@ -31,3 +31,4 @@ drush -y config:set user.settings register admin_only
 echo "-- Installo e configuro i moduli base ----------------------------------"
 drush -y pm:install field pathauto entity_reference_display menu_link_attributes
 drush -y config:set pathauto.settings punctuation.slash 1
+drush -y config:set pathauto.settings max_length 201
