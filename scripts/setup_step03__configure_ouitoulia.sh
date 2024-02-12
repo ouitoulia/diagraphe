@@ -5,12 +5,12 @@
 
 echo "-- Installo il tema ----------------------------------------------------"
 drush -y pm:install components big_pipe inline_form_errors responsive_image \
-         easy_breadcrumb twig_tweak
+         easy_breadcrumb menu_link_attributes pathauto twig_tweak
 drush -y theme:enable bootstrap_italia skenografia
 drush -y config:set system.theme default skenografia
 
-echo "-- Configuro il text editor --------------------------------------------"
-drush -y pm:install editor ckeditor5 bootstrap_italia_text_editor2
+#echo "-- Configuro il text editor --------------------------------------------"
+#drush -y pm:install editor ckeditor5 bootstrap_italia_text_editor2
 
 echo "-- Installo i vocabolari -----------------------------------------------"
 drush -y pm:install lexika
@@ -28,8 +28,6 @@ drush -y pm:install config
 # Fix node_reference module for minimal profile
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/bootstrap_italia/modules/bootstrap_italia_paragraph_node_reference/config/optional"
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/skenografia/config/update/"
-# Update deps config
-#drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/themethla/config/update/"
 drush -y pm:uninstall config
 
 echo "-- Importo i dati ------------------------------------------------------"
