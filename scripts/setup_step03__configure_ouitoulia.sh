@@ -24,10 +24,12 @@ drush -y pm:install prosopon
 echo "-- Installo i campi usati dalle entità Node ----------------------------"
 drush -y pm:install themethla
 
-# Fix node_reference module for minimal profile
 drush -y pm:install config
+# Fix node_reference module for minimal profile
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/bootstrap_italia/modules/bootstrap_italia_paragraph_node_reference/config/optional"
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/skenografia/config/update/"
+# Update deps config
+#drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/themethla/config/update/"
 drush -y pm:uninstall config
 
 echo "-- Importo i dati ------------------------------------------------------"
