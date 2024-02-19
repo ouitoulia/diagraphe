@@ -5,6 +5,9 @@
 #  È scontato che tu non lo debba usare in produzione.
 #  Ed è anche scontato che possa rompere la tua installazione.
 #
+#  Uso: posizionati nella root di drupal (dove c'è composer.json)
+#  $ ./scripts/utility__upgrade_dev_env.sh
+#
 #  Author: Pietro Arturo Panetta
 #  Site: https://www.drupal.org/u/arturopanetta
 #  Copyright: @arturu 2024
