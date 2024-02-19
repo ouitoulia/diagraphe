@@ -35,11 +35,12 @@ fi
 composer update -W --no-cache
 drush -y updb
 drush cr
+drush -y pm:install config
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/lexika/config/install"
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/bibliotheke/config/install"
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/prosopon/config/install"
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/themethla/config/install"
-drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/exesti/config/install"
+drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/exesti/config/update"
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/sunchronizo/config/install"
 
 drush migrate:import --update --all
