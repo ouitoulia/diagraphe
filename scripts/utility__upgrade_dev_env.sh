@@ -14,16 +14,16 @@
 composer update -W --no-cache
 drush updb -y
 drush cr
-drush config:import -y --partial --source=$(drush drupal:directory)/web/modules/contrib/lexika/config/install
-drush config:import -y --partial --source=$(drush drupal:directory)/web/modules/contrib/bibliotheke/config/install
-drush config:import -y --partial --source=$(drush drupal:directory)/web/modules/contrib/prosopon/config/install
-drush config:import -y --partial --source=$(drush drupal:directory)/web/modules/contrib/themethla/config/install
-drush config:import -y --partial --source=$(drush drupal:directory)/web/modules/contrib/exesti/config/install
-drush config:import -y --partial --source=$(drush drupal:directory)/web/modules/contrib/sunchronizo/config/install
+drush config:import -y --partial --source=$(drush drupal:directory)/modules/contrib/lexika/config/install
+drush config:import -y --partial --source=$(drush drupal:directory)/modules/contrib/bibliotheke/config/install
+drush config:import -y --partial --source=$(drush drupal:directory)/modules/contrib/prosopon/config/install
+drush config:import -y --partial --source=$(drush drupal:directory)/modules/contrib/themethla/config/install
+drush config:import -y --partial --source=$(drush drupal:directory)/modules/contrib/exesti/config/install
+drush config:import -y --partial --source=$(drush drupal:directory)/modules/contrib/sunchronizo/config/install
 
 drush migrate:import --update --all
 
-drush config:import -y --partial --source=$(drush drupal:directory)/web/modules/contrib/prosis/config/install
+drush config:import -y --partial --source=$(drush drupal:directory)/modules/contrib/prosis/config/install
 
 drush updb -y
 
