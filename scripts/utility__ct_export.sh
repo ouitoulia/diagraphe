@@ -6,7 +6,7 @@
 #  Author: Pietro Arturo Panetta
 #  Site: https://www.drupal.org/u/arturopanetta
 #  Copyright: @arturu 2023
-#  License: GPL-3.0-only
+#  License: AGPL-3.0-only
 #
 ################################################################################
 
