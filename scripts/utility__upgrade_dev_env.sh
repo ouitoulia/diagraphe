@@ -41,8 +41,10 @@ drush -y config:import --partial --source="$(drush drupal:directory)/modules/con
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/prosopon/config/install"
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/themethla/config/install"
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/exesti/config/update"
-drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/sunchronizo/config/install"
 
+drush -y pm:uninstall migrate
+drush -y pm:install sunchronizo
+drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/sunchronizo/config/install"
 drush migrate:import --update --all
 
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/prosis/config/install"
