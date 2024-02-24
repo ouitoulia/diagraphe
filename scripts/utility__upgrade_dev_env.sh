@@ -31,26 +31,34 @@ else
     exit 1
 fi
 
+# Salvo alcuni percorsi
+drupal_dir=$(drush drupal:directory)
+composer_dir=$(dirname "$drupal_dir")
+
+# Mi sposto nella cartella dove si trova composer.json
+pushd "$composer_dir" || exit 1
 
 composer update -W --no-cache
 drush -y updb
 drush cr
 drush -y pm:install config
-drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/lexika/config/install"
-drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/bibliotheke/config/install"
-drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/prosopon/config/install"
-drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/themethla/config/install"
-drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/exesti/config/update"
+drush -y config:import --partial --source="${drupal_dir}/modules/contrib/lexika/config/install"
+drush -y config:import --partial --source="${drupal_dir}/modules/contrib/bibliotheke/config/install"
+drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosopon/config/install"
+drush -y config:import --partial --source="${drupal_dir}/modules/contrib/themethla/config/install"
+drush -y config:import --partial --source="${drupal_dir}/modules/contrib/exesti/config/update"
 
 drush -y pm:uninstall migrate
 drush -y pm:install sunchronizo
-drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/sunchronizo/config/install"
+drush -y config:import --partial --source="${drupal_dir}/modules/contrib/sunchronizo/config/install"
 drush migrate:import --update --all
 
-drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/prosis/config/install"
-drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/skenografia/config/update/"
+drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/config/install"
+drush -y config:import --partial --source="${drupal_dir}/themes/contrib/skenografia/config/update/"
 drush -y updb
 
 drush cr
+
+popd || exit 1
 
 echo "Aggiornamento concluso."
