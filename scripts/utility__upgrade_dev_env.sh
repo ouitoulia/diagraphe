@@ -59,6 +59,7 @@ drush -y updb
 
 drush cr
 
+# Torno nella cartella da dove è stato lanciato lo script
 popd || exit 1
 
 echo "Aggiornamento concluso."
