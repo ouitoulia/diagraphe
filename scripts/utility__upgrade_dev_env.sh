@@ -57,6 +57,8 @@ drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/
 drush -y config:import --partial --source="${drupal_dir}/themes/contrib/skenografia/config/update/"
 drush -y updb
 
+composer require ouitoulia/skenografia-dist:^1 --no-cache
+
 drush cr
 
 # Torno nella cartella da dove è stato lanciato lo script
