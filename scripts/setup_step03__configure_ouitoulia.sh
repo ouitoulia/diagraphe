@@ -23,7 +23,10 @@ drush -y pm:uninstall config
 
 echo "-- Importo i dati obbligatori ------------------------------------------"
 drush -y pm:install sunchronizo
-drush migrate:import taxonomy_common_uuid taxonomy_common scuola_roles main_menu
+drush migrate:import taxonomy_common_uuid
+drush migrate:import taxonomy_common
+drush migrate:import scuola_roles
+drush migrate:import main_menu
 
 echo "-- Installo Viste, Blocchi e Permessi ----------------------------------"
 drush -y pm:install prosis exesti
