@@ -54,7 +54,6 @@ drush -y config:import --partial --source="${drupal_dir}/modules/contrib/sunchro
 drush migrate:import --update --all
 
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/config/install"
-drush -y config:import --partial --source="${drupal_dir}/themes/contrib/skenografia/config/update/"
 drush -y updb
 
 composer require ouitoulia/skenografia-dist:^1 --no-cache
