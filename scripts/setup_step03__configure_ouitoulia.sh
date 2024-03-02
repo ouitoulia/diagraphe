@@ -21,9 +21,9 @@ drush -y config:import --partial --source="$(drush drupal:directory)/themes/cont
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/skenografia/config/update/"
 drush -y pm:uninstall config
 
-echo "-- Importo i dati ------------------------------------------------------"
+echo "-- Importo i dati obbligatori ------------------------------------------"
 drush -y pm:install sunchronizo
-drush migrate:import --all
+drush migrate:import taxonomy_common_uuid taxonomy_common scuola_roles main_menu
 
 echo "-- Installo Viste, Blocchi e Permessi ----------------------------------"
 drush -y pm:install prosis exesti

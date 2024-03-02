@@ -228,6 +228,11 @@ echo "------------------------"
 ddev exec /var/www/html/scripts/setup_step03__configure_ouitoulia.sh
 
 echo " "
+n "Dati facoltativi" notice
+echo "-------------------------"
+ddev exec /var/www/html/scripts/setup_step04__import_optional_data.sh
+
+echo " "
 n "Pulizia" notice
 echo "----------------"
 #dev exec drush -y pm:uninstall sunchronizo_lexika lexika migrate dblog bibliotheke
