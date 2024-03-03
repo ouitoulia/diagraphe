@@ -191,48 +191,48 @@ while [[ -z $adminPass || ${#adminPass} -lt 12 ]]; do
   adminPass=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
 done
 
-echo " "
+echo -e "\n\n"
 n "Configuro ddev" notice
 echo "-----------------------"
 ddev config --project-type=drupal10 --docroot=web --create-docroot
 
-echo " "
+echo -e "\n\n"
 n "Avvio i container" notice
 echo "--------------------------"
 ddev start
 
-echo " "
+echo -e "\n\n"
 n "Installo Ouitoulía codebase" notice
 echo "------------------------------------"
 ddev composer clear-cache
 ddev composer create ouitoulia/diagraphe:${ouitouliaCodebaseInstallVersion} --no-install --no-cache --no-interaction
 
-echo " "
+echo -e "\n\n"
 n "Do i permessi di esecuzione agli script di installazione" notice
 echo "-----------------------------------------------------------------"
 ddev exec chmod -R +x /var/www/html/scripts/
 
-echo " "
+echo -e "\n\n"
 n "Installo le dipendenze della codebase" notice
 echo "----------------------------------------------"
 ddev exec /var/www/html/scripts/setup_step01__ouitoulia_codebase.sh
 
-echo " "
+echo -e "\n\n"
 n "Setup Drupal" notice
 echo "---------------------"
 ddev exec /var/www/html/scripts/setup_step02__configure_drupal.sh ${adminPass}
 
-echo " "
+echo -e "\n\n"
 n "Setup Ouitoulía" notice
 echo "------------------------"
 ddev exec /var/www/html/scripts/setup_step03__configure_ouitoulia.sh
 
-echo " "
+echo -e "\n\n"
 n "Dati facoltativi" notice
 echo "-------------------------"
 ddev exec /var/www/html/scripts/setup_step04__import_optional_data.sh
 
-echo " "
+echo -e "\n\n"
 n "Pulizia" notice
 echo "----------------"
 #dev exec drush -y pm:uninstall sunchronizo_lexika lexika migrate dblog bibliotheke

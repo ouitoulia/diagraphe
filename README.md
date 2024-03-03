@@ -17,6 +17,7 @@ $ composer install
 ```
 2) Configura Drupal eseguendo [setup_step02](scripts/setup_step02__configure_drupal.sh)
 3) Configura Ouitoulía eseguendo [setup_step03](scripts/setup_step03__configure_ouitoulia.sh)
+4) Installa i dati facoltativi (materie, indirizzi di studio, ecc) o il demo eseguendo [setup_step04](scripts/setup_step04__import_optional_data.sh)
 
 Se usi ddev puoi installare tutto con un unico comando, esegui [ddev_installer](scripts/oituolia_ddev_installer.sh)
 ```shell
