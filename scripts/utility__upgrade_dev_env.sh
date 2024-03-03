@@ -75,6 +75,7 @@ drush -y pm:install sunchronizo
 
 echo -e "\n\n-- Aggiorno la configurazione di sunchronizo --------------------"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/sunchronizo/config/install"
+drush cr
 
 echo -e "\n\n-- Aggiorno i dati obbligatori ----------------------------------"
 drush migrate:import taxonomy_common_uuid
