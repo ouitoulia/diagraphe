@@ -3,8 +3,8 @@
 # This script performs the initial configuration of Ouitoulía.
 # Run this script in the location where your composer.json is.
 
-# Lista vocabolari standard (impostazione di default)
-opzioni=("demo" "taxonomy_indirizzi_di_studio_infanzia" "taxonomy_indirizzi_di_studio_primaria" "taxonomy_indirizzi_di_studio_secondaria_primo_grado" "taxonomy_indirizzi_di_studio_secondaria_secondo_grado" "taxonomy_indirizzi_di_studio_universita" "taxonomy_indirizzi_di_studio_afam" "taxonomy_materie_secondaria_primo_grado" "taxonomy_materie_secondaria_secondo_grado" "taxonomy_materie_laboratori")
+# Lista migrazioni opzionali (impostazione di default)
+opzioni=("demo" "menu_opzionali" "taxonomy_indirizzi_di_studio_infanzia" "taxonomy_indirizzi_di_studio_primaria" "taxonomy_indirizzi_di_studio_secondaria_primo_grado" "taxonomy_indirizzi_di_studio_secondaria_secondo_grado" "taxonomy_indirizzi_di_studio_universita" "taxonomy_indirizzi_di_studio_afam" "taxonomy_materie_secondaria_primo_grado" "taxonomy_materie_secondaria_secondo_grado" "taxonomy_materie_laboratori")
 
 # Controllo se viene passata una lista diversa tramite parametro
 if [[ $# -ge 1 && "$(declare -p "$1" 2>/dev/null)" =~ "declare -a" ]]; then
@@ -22,9 +22,9 @@ format_migrazione() {
   migrazione="${migrazione//_/ }"
 
   if [[ $1 == "demo" ]]; then
-    migrazione="i contenuti $1"
+    migrazione="il $1"
   else
-    migrazione="il vocabolario: $migrazione"
+    migrazione="i dati: $migrazione"
   fi
   echo "$migrazione"
 }
