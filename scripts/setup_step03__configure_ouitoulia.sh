@@ -14,6 +14,10 @@ drush -y pm:install lexika bibliotheke prosopon
 echo -e "\n\n-- Installo i campi usati dalle entità Node ---------------------"
 drush -y pm:install themethla
 
+echo -e "\n\n-- Installo il sub-theme ----------------------------------------"
+drush -y theme:enable skenografia
+drush -y config:set system.theme default skenografia
+
 drush -y pm:install config
 # Fix node_reference module for minimal profile
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/bootstrap_italia/modules/bootstrap_italia_paragraph_node_reference/config/optional"
@@ -25,10 +29,6 @@ drush migrate:import taxonomy_common_uuid
 drush migrate:import taxonomy_common
 drush migrate:import scuola_roles
 drush migrate:import main_menu
-
-echo -e "\n\n-- Installo il sub-theme, Viste, Blocchi e Permessi -------------"
-drush -y theme:enable skenografia
-drush -y config:set system.theme default skenografia
 
 echo -e "\n\n-- Installo Viste, Blocchi e Permessi -------------"
 drush -y pm:install prosis exesti
