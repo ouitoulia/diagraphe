@@ -65,6 +65,9 @@ drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosopo
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/themethla/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/exesti/config/update"
 
+echo -e "\n\n-- Aggiorno gli eventuali path obsoleti -------------------------"
+drush pathauto:aliases-generate update all
+
 # Aggiorno i moduli migrate
 if [ "$stato_sunchronizo" == "Enabled" ]; then
   # Se sunchronizo è attivo, disinstallo migrate così disinstalla tutte le dipendenze.
