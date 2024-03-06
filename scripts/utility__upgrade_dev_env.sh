@@ -45,6 +45,7 @@ composer_dir=$(dirname "$drupal_dir")
 # Salvo lo stato dei moduli necessari all'aggiornamento
 stato_config=$(get_module_status "config")
 stato_sunchronizo=$(get_module_status "sunchronizo")
+stato_leaflet_views=$(get_module_status "leaflet_views")
 
 echo -e "\n\n-- Mi sposto nella cartella dove si trova composer.json ---------"
 pushd "$composer_dir" || exit 1
@@ -87,6 +88,10 @@ drush migrate:import scuola_roles
 drush migrate:import main_menu
 
 echo -e "\n\n-- Aggiorno le configurazioni di prosis e skenografia -----------"
+# Aggiorno le configurazioni
+if [ "$stato_leaflet_views" == "Disabled" ]; then
+  drush -y pm:install leaflet_views
+fi
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/config/update"
 drush -y config:import --partial --source="${drupal_dir}/themes/contrib/skenografia/config/update"
