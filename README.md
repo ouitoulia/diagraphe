@@ -24,6 +24,22 @@ Se usi ddev puoi installare tutto con un unico comando, esegui [ddev_installer](
 bash <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.2.x/scripts/oituolia_ddev_installer.sh")
 ```
 
+## Aggiornamento
+Per aggiornare un'installazione in ambiente di sviluppo è disponibile 
+[questo script per l'aggiornamento automatico](scripts/utility__upgrade_dev_env.sh)
+
+Lo script è *sperimentale* ed è pensato per le installazioni di sviluppo,
+non è testato per gli ambienti di produzione.
+
+Prima di eseguire lo script di aggiornamento assicurati che sia l'ultima versione 
+disponibile - viene aggiornato in base ai cambiamenti effettuati negli altri moduli -
+quindi prima aggiorna lo script scaricando 
+https://raw.githubusercontent.com/ouitoulia/diagraphe/10.2.x/scripts/utility__upgrade_dev_env.sh ,
+poi eseguilo. Se vuoi fare tutto con un solo comando esegui:
+```shell
+bash <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.2.x/scripts/utility__upgrade_dev_env.sh")
+```
+
 ## License
 
 Copyright (C) 2023 https://github.com/ouitoulia

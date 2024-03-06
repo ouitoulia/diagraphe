@@ -46,6 +46,7 @@ composer_dir=$(dirname "$drupal_dir")
 stato_config=$(get_module_status "config")
 stato_sunchronizo=$(get_module_status "sunchronizo")
 stato_leaflet_views=$(get_module_status "leaflet_views")
+stato_menu_block=$(get_module_status "menu_block")
 
 echo -e "\n\n-- Mi sposto nella cartella dove si trova composer.json ---------"
 pushd "$composer_dir" || exit 1
@@ -74,7 +75,7 @@ if [ "$stato_sunchronizo" == "Enabled" ]; then
   # Se sunchronizo è attivo, disinstallo migrate così disinstalla tutte le dipendenze.
   drush -y pm:uninstall migrate
 fi
-# In ongi caso installo sunchronizo
+# In ogni caso installo sunchronizo
 drush -y pm:install sunchronizo
 
 echo -e "\n\n-- Aggiorno la configurazione di sunchronizo --------------------"
@@ -88,10 +89,15 @@ drush migrate:import scuola_roles
 drush migrate:import main_menu
 
 echo -e "\n\n-- Aggiorno le configurazioni di prosis e skenografia -----------"
-# Aggiorno le configurazioni
+# Controllo se sono attivi alcuni moduli
 if [ "$stato_leaflet_views" == "Disabled" ]; then
   drush -y pm:install leaflet_views
 fi
+if [ "$stato_menu_block" == "Disabled" ]; then
+  drush -y pm:install menu_block
+fi
+
+# Aggiorno le configurazioni
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/config/update"
 drush -y config:import --partial --source="${drupal_dir}/themes/contrib/skenografia/config/update"
@@ -110,7 +116,7 @@ dati_da_aggiornare=("menu_opzionali" "taxonomy_indirizzi_di_studio_infanzia" "ta
 
 "${composer_dir}"/scripts/setup_step04__import_optional_data.sh $dati_da_aggiornare
 
-echo -e "\n\n-- Disattivo i moduli che inizialmente erano disattivati --------"
+echo -e "\n\n-- Disattivo i moduli config e sunchronizo se erano disattivati -"
 if [ "$stato_config" == "Disabled" ]; then
   drush -y pm:uninstall config
 fi
