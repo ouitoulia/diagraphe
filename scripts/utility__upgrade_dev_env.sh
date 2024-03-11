@@ -47,6 +47,7 @@ stato_config=$(get_module_status "config")
 stato_sunchronizo=$(get_module_status "sunchronizo")
 stato_leaflet_views=$(get_module_status "leaflet_views")
 stato_menu_block=$(get_module_status "menu_block")
+stato_better_exposed_filters=$(get_module_status "better_exposed_filters")
 
 echo -e "\n\n-- Mi sposto nella cartella dove si trova composer.json ---------"
 pushd "$composer_dir" || exit 1
@@ -95,6 +96,9 @@ if [ "$stato_leaflet_views" == "Disabled" ]; then
 fi
 if [ "$stato_menu_block" == "Disabled" ]; then
   drush -y pm:install menu_block
+fi
+if [ "$stato_better_exposed_filters" == "Disabled" ]; then
+  drush -y pm:install stato_better_exposed_filters
 fi
 
 # Aggiorno le configurazioni
