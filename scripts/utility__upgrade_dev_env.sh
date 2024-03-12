@@ -58,7 +58,7 @@ drush -y updb
 drush cr
 
 # Aggiorno le configurazioni
-if [ "$stato_config" == "Disabled" ]; then
+if [ "$stato_config" != "Enabled" ]; then
   drush -y pm:install config
 fi
 echo "-- Aggiorno le configurazioni di lexika, bibliotheke, prosopon, themethla ed exesti."
@@ -91,13 +91,13 @@ drush migrate:import main_menu
 
 echo -e "\n\n-- Aggiorno le configurazioni di prosis e skenografia -----------"
 # Controllo se sono attivi alcuni moduli
-if [ "$stato_leaflet_views" == "Disabled" ]; then
+if [ "$stato_leaflet_views" != "Enabled" ]; then
   drush -y pm:install leaflet_views
 fi
-if [ "$stato_menu_block" == "Disabled" ]; then
+if [ "$stato_menu_block" != "Enabled" ]; then
   drush -y pm:install menu_block
 fi
-if [ "$stato_better_exposed_filters" == "Disabled" ]; then
+if [ "$stato_better_exposed_filters" != "Enabled" ]; then
   drush -y pm:install stato_better_exposed_filters
 fi
 
