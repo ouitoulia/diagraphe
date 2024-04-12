@@ -9,7 +9,8 @@ drush -y pm:install components big_pipe inline_form_errors responsive_image \
 drush -y theme:enable bootstrap_italia
 
 echo -e "\n\n-- Installo Vocabolari, Media gestiti e Configurazione utenti ---"
-drush -y pm:install lexika bibliotheke prosopon
+drush -y pm:install bibliotheke
+drush -y pm:install lexika prosopon
 
 echo -e "\n\n-- Installo i campi usati dalle entità Node ---------------------"
 drush -y pm:install themethla
