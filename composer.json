@@ -34,6 +34,7 @@
     "drupal/recommended-project": "^10.2",
     "drupal/twig_tweak": "^3.2",
     "oomphinc/composer-installers-extender": "^2.0",
+    "ouitoulia/anazetesis": "^1",
     "ouitoulia/exesti": "^1",
     "ouitoulia/prosis": "^1",
     "ouitoulia/skenografia": "^1",

@@ -49,6 +49,7 @@ stato_leaflet_views=$(get_module_status "leaflet_views")
 stato_menu_block=$(get_module_status "menu_block")
 stato_better_exposed_filters=$(get_module_status "better_exposed_filters")
 stato_bootstrap_italia_empty_front_page=$(get_module_status "better_exposed_filters")
+stato_anazetesis=$(get_module_status "anazetesis")
 
 echo -e "\n\n-- Mi sposto nella cartella dove si trova composer.json ---------"
 pushd "$composer_dir" || exit 1
@@ -118,6 +119,14 @@ composer require ouitoulia/skenografia-dist:^1 --no-cache
 
 # Cancello la cache
 drush cr
+
+echo -e "\n\n-- Aggiorno il modulo di ricerca --------------------------------"
+if [ "$stato_anazetesis" != "Enabled" ]; then
+  composer require ouitoulia/anazetesis
+  drush -y pm:install anazetesis
+fi
+
+drush cron -y
 
 echo -e "\n\n-- Aggiorno i dati facoltativi ----------------------------------"
 dati_da_aggiornare=("menu_opzionali" "taxonomy_indirizzi_di_studio_infanzia" "taxonomy_indirizzi_di_studio_primaria" "taxonomy_indirizzi_di_studio_secondaria_primo_grado" "taxonomy_indirizzi_di_studio_secondaria_secondo_grado" "taxonomy_indirizzi_di_studio_universita" "taxonomy_indirizzi_di_studio_afam" "taxonomy_materie_secondaria_primo_grado" "taxonomy_materie_secondaria_secondo_grado" "taxonomy_materie_laboratori")
