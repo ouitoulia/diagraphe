@@ -44,3 +44,5 @@ for opzione in "${opzioni[@]}"; do
     fi
   fi
 done
+
+drush -y cron

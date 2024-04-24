@@ -31,8 +31,11 @@ drush migrate:import taxonomy_common
 drush migrate:import scuola_roles
 drush migrate:import main_menu
 
-echo -e "\n\n-- Installo Viste, Blocchi e Permessi -------------"
+echo -e "\n\n-- Installo Viste, Blocchi e Permessi ---------------------------"
 drush -y pm:install prosis exesti
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/prosis/config/update/"
+
+echo -e "\n\n-- Installo il modulo di ricerca --------------------------------"
+drush -y pm:install anazetesis
 
 drush -y pm:uninstall config
