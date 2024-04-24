@@ -132,7 +132,7 @@ if [ "$stato_anazetesis" != "Enabled" ]; then
 fi
 
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazetesis/config/install"
-drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazetesis/config/update"
+drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazetesis/config/optional"
 drush cr
 drush cron -y
 
