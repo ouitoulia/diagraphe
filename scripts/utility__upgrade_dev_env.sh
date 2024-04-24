@@ -120,18 +120,21 @@ composer require ouitoulia/skenografia-dist:^1 --no-cache
 # Cancello la cache
 drush cr
 
+echo -e "\n\n-- Aggiorno i dati facoltativi ----------------------------------"
+dati_da_aggiornare=("menu_opzionali" "taxonomy_indirizzi_di_studio_infanzia" "taxonomy_indirizzi_di_studio_primaria" "taxonomy_indirizzi_di_studio_secondaria_primo_grado" "taxonomy_indirizzi_di_studio_secondaria_secondo_grado" "taxonomy_indirizzi_di_studio_universita" "taxonomy_indirizzi_di_studio_afam" "taxonomy_materie_secondaria_primo_grado" "taxonomy_materie_secondaria_secondo_grado" "taxonomy_materie_laboratori")
+
+"${composer_dir}"/scripts/setup_step04__import_optional_data.sh $dati_da_aggiornare
+
 echo -e "\n\n-- Aggiorno il modulo di ricerca --------------------------------"
 if [ "$stato_anazetesis" != "Enabled" ]; then
   composer require ouitoulia/anazetesis
   drush -y pm:install anazetesis
 fi
 
+drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazetesis/config/install"
+drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazetesis/config/update"
+drush cr
 drush cron -y
-
-echo -e "\n\n-- Aggiorno i dati facoltativi ----------------------------------"
-dati_da_aggiornare=("menu_opzionali" "taxonomy_indirizzi_di_studio_infanzia" "taxonomy_indirizzi_di_studio_primaria" "taxonomy_indirizzi_di_studio_secondaria_primo_grado" "taxonomy_indirizzi_di_studio_secondaria_secondo_grado" "taxonomy_indirizzi_di_studio_universita" "taxonomy_indirizzi_di_studio_afam" "taxonomy_materie_secondaria_primo_grado" "taxonomy_materie_secondaria_secondo_grado" "taxonomy_materie_laboratori")
-
-"${composer_dir}"/scripts/setup_step04__import_optional_data.sh $dati_da_aggiornare
 
 echo -e "\n\n-- Disattivo i moduli config e sunchronizo se erano disattivati -"
 if [ "$stato_config" == "Disabled" ]; then
