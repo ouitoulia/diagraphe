@@ -92,6 +92,8 @@ drush migrate:import scuola_roles
 drush migrate:import main_menu
 
 echo -e "\n\n-- Aggiorno le configurazioni di prosis e skenografia -----------"
+composer require ouitoulia/skenografia:^2 --no-cache
+
 # Controllo se sono attivi alcuni moduli
 if [ "$stato_leaflet_views" != "Enabled" ]; then
   drush -y pm:install leaflet_views
@@ -115,7 +117,7 @@ echo -e "\n\n-- Aggiorno il database -----------------------------------------"
 drush -y updb
 
 echo -e "\n\n-- Aggiorno le librerie del tema --------------------------------"
-composer require ouitoulia/skenografia-dist:^1 --no-cache
+composer require ouitoulia/skenografia-dist:^2 --no-cache
 
 # Cancello la cache
 drush cr
