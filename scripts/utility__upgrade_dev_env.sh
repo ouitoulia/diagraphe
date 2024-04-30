@@ -111,6 +111,7 @@ fi
 # Aggiorno le configurazioni
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/config/update"
+drush -y config:import --partial --source="${drupal_dir}/themes/contrib/skenografia/config/install"
 drush -y config:import --partial --source="${drupal_dir}/themes/contrib/skenografia/config/update"
 
 echo -e "\n\n-- Aggiorno il database -----------------------------------------"
