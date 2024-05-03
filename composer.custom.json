@@ -1,0 +1,6 @@
+{
+  "name": "ACME/custom",
+  "description": "Custom packages. Questo file serve per aggiungere dipendenze custom e poter aggiornare composer.json in tutta tranquillità sovrascrivendolo.",
+  "require": {
+  }
+}

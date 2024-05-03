@@ -66,6 +66,7 @@
   "extra": {
     "merge-plugin": {
       "include": [
+        "composer.custom.json",
         "web/themes/contrib/skenografia/composer.libraries.json",
         "web/modules/contrib/toc_js/composer.libraries.json"
       ],
