@@ -1,4 +1,4 @@
-name: "Build Release"
+name: "Create Ouitoulia Release"
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
 #      - '/^\d+\.\d+\.\d+(-\w+)?$/'
 
 jobs:
-  release:
-    name: "Release"
+  ouitoulia_release:
+    name: "Ouitoulia Release"
 
     runs-on: "ubuntu-latest"
     permissions:
