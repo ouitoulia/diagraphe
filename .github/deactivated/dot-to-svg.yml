@@ -1,10 +1,10 @@
 name: Generate SVG from DOT and commit
 
 # Temporaneamente disattivata
-#on:
-#  push:
-#    paths:
-#      - 'docs/diagramma-er.dot'
+on:
+  push:
+    paths:
+      - 'docs/diagramma-er.dot'
 
 jobs:
   generate-svg:
