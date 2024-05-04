@@ -20,8 +20,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Wait for 15 seconds (packagist webhook)
-        run: sleep 15
+      - name: Wait for 10 seconds (packagist webhook)
+        run: sleep 10
 
       - name: Trigger workflow in naus-emporos
         run: |
