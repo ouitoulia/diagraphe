@@ -20,6 +20,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Wait for 60 seconds (packagist webhook)
+        run: sleep 60
+
       - name: Trigger workflow in naus-emporos
         run: |
           repo_owner="ouitoulia" 
