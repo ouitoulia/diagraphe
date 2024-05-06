@@ -220,7 +220,7 @@ ddev exec /var/www/html/scripts/setup_step01__ouitoulia_codebase.sh
 echo -e "\n\n"
 n "Setup Drupal" notice
 echo "---------------------"
-ddev exec /var/www/html/scripts/setup_step02__configure_drupal.sh ${adminPass}
+ddev exec /var/www/html/scripts/setup_step02__configure_drupal.sh "${adminPass}"
 
 echo -e "\n\n"
 n "Setup Ouitoulía" notice

@@ -1,21 +1,21 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # This script performs the initial configuration of Ouitoulía.
 # Run this script in the location where your composer.json is.
 
-echo -e "\n\n-- Installo il tema base ----------------------------------------"
+printf "\n\n-- Installo il tema base -----------------------------------------"
 drush -y pm:install components big_pipe inline_form_errors responsive_image \
          easy_breadcrumb menu_link_attributes pathauto twig_tweak
 drush -y theme:enable bootstrap_italia
 
-echo -e "\n\n-- Installo Vocabolari, Media gestiti e Configurazione utenti ---"
+printf "\n\n-- Installo Vocabolari, Media gestiti e Configurazione utenti ----"
 drush -y pm:install bibliotheke
 drush -y pm:install lexika prosopon
 
-echo -e "\n\n-- Installo i campi usati dalle entità Node ---------------------"
+printf "\n\n-- Installo i campi usati dalle entità Node ----------------------"
 drush -y pm:install themethla
 
-echo -e "\n\n-- Installo il sub-theme ----------------------------------------"
+printf "\n\n-- Installo il sub-theme -----------------------------------------"
 drush -y theme:enable skenografia
 drush -y config:set system.theme default skenografia
 
@@ -24,18 +24,18 @@ drush -y pm:install config
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/bootstrap_italia/modules/bootstrap_italia_paragraph_node_reference/config/optional"
 drush -y config:import --partial --source="$(drush drupal:directory)/themes/contrib/skenografia/config/update/"
 
-echo -e "\n\n-- Importo i dati obbligatori -----------------------------------"
+printf "\n\n-- Importo i dati obbligatori ------------------------------------"
 drush -y pm:install sunchronizo
 drush migrate:import taxonomy_common_uuid
 drush migrate:import taxonomy_common
 drush migrate:import scuola_roles
 drush migrate:import main_menu
 
-echo -e "\n\n-- Installo Viste, Blocchi e Permessi ---------------------------"
+printf "\n\n-- Installo Viste, Blocchi e Permessi ----------------------------"
 drush -y pm:install prosis exesti
 drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/prosis/config/update/"
 
-echo -e "\n\n-- Installo il modulo di ricerca --------------------------------"
+printf "\n\n-- Installo il modulo di ricerca ---------------------------------"
 drush -y pm:install anazetesis
 
 drush -y pm:uninstall config

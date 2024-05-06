@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # This script install Ouitoulía codebase.
 # You can use this script to build your own images as well.
