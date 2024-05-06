@@ -18,7 +18,8 @@
 random_string=$(openssl rand -base64 6 | tr -dc 'a-zA-Z0-9' | head -c 5)
 
 printf "\n\nLa stringa da ricopiare: %s\n" "$random_string"
-read -r "Sei sicuro di voler eseguire lo script? Inserisci la stringa mostrata sopra per confermare: " user_input
+printf "\n\nSei sicuro di voler eseguire lo script? Inserisci la stringa mostrata sopra per confermare: "
+read -r user_input
 
 if [ "$user_input" = "$random_string" ]; then
     printf "Conferma ricevuta. Procedo all'aggiornamento...\n\n"
