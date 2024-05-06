@@ -55,7 +55,7 @@ drush cr
 if [ "$stato_config" != "Enabled" ]; then
   drush -y pm:install config
 fi
-printf "-- Aggiorno le configurazioni di lexika, bibliotheke, prosopon, themethla ed exesti.\n"
+printf "\n\n-- Aggiorno le configurazioni di lexika, bibliotheke, prosopon, themethla ed exesti.\n"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/lexika/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/bibliotheke/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosopon/config/install"
@@ -66,7 +66,7 @@ printf "\n\n-- Aggiorno gli eventuali path obsoleti --------------------------\n
 drush pathauto:aliases-generate update all
 
 # Aggiorno i moduli migrate
-if [ "$stato_sunchronizo" == "Enabled" ]; then
+if [ "$stato_sunchronizo" = "Enabled" ]; then
   # Se sunchronizo è attivo, disinstallo migrate così disinstalla tutte le dipendenze.
   drush -y pm:uninstall migrate
 fi
