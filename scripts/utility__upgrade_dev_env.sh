@@ -18,7 +18,7 @@
 random_string=$(openssl rand -base64 6 | tr -dc 'a-zA-Z0-9' | head -c 5)
 
 printf "\n\nLa stringa da ricopiare: %s\n" "$random_string"
-printf "\n\nSei sicuro di voler eseguire lo script? Inserisci la stringa mostrata sopra per confermare: "
+printf "\nSei sicuro di voler eseguire lo script? Inserisci la stringa mostrata sopra per confermare: "
 read -r user_input
 
 if [ "$user_input" = "$random_string" ]; then
@@ -46,7 +46,7 @@ printf "\n\n-- Mi sposto nella cartella dove si trova composer.json ----------"
 
 cd "$composer_dir" || exit 1
 
-printf "\n\nAggiorno il software"
+printf "\n\nAggiorno il software\n"
 composer update -W --no-cache
 drush -y updb
 drush cr
@@ -55,14 +55,14 @@ drush cr
 if [ "$stato_config" != "Enabled" ]; then
   drush -y pm:install config
 fi
-echo "-- Aggiorno le configurazioni di lexika, bibliotheke, prosopon, themethla ed exesti."
+printf "-- Aggiorno le configurazioni di lexika, bibliotheke, prosopon, themethla ed exesti.\n"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/lexika/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/bibliotheke/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosopon/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/themethla/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/exesti/config/update"
 
-printf "\n\n-- Aggiorno gli eventuali path obsoleti --------------------------"
+printf "\n\n-- Aggiorno gli eventuali path obsoleti --------------------------\n"
 drush pathauto:aliases-generate update all
 
 # Aggiorno i moduli migrate
@@ -73,17 +73,17 @@ fi
 # In ogni caso installo sunchronizo
 drush -y pm:install sunchronizo
 
-printf "\n\n-- Aggiorno la configurazione di sunchronizo ---------------------"
+printf "\n\n-- Aggiorno la configurazione di sunchronizo ---------------------\n"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/sunchronizo/config/install"
 drush cr
 
-printf "\n\n-- Aggiorno i dati obbligatori -----------------------------------"
+printf "\n\n-- Aggiorno i dati obbligatori -----------------------------------\n"
 drush migrate:import taxonomy_common_uuid
 drush migrate:import taxonomy_common
 drush migrate:import scuola_roles
 drush migrate:import main_menu
 
-printf "\n\n-- Aggiorno le configurazioni di prosis e skenografia ------------"
+printf "\n\n-- Aggiorno le configurazioni di prosis e skenografia ------------\n"
 composer require ouitoulia/skenografia:^2 --no-cache
 
 # Controllo se sono attivi alcuni moduli
@@ -106,21 +106,21 @@ drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/
 drush -y config:import --partial --source="${drupal_dir}/themes/contrib/skenografia/config/install"
 drush -y config:import --partial --source="${drupal_dir}/themes/contrib/skenografia/config/update"
 
-printf "\n\n-- Aggiorno il database ------------------------------------------"
+printf "\n\n-- Aggiorno il database ------------------------------------------\n"
 drush -y updb
 
-printf "\n\n-- Aggiorno le librerie del tema ---------------------------------"
+printf "\n\n-- Aggiorno le librerie del tema ---------------------------------\n"
 composer require ouitoulia/skenografia-dist:^2 --no-cache
 
 # Cancello la cache
 drush cr
 
-printf "\n\n-- Aggiorno i dati facoltativi -----------------------------------"
+printf "\n\n-- Aggiorno i dati facoltativi -----------------------------------\n"
 dati_da_aggiornare="menu_opzionali taxonomy_indirizzi_di_studio_infanzia taxonomy_indirizzi_di_studio_primaria taxonomy_indirizzi_di_studio_secondaria_primo_grado taxonomy_indirizzi_di_studio_secondaria_secondo_grado taxonomy_indirizzi_di_studio_universita taxonomy_indirizzi_di_studio_afam taxonomy_materie_secondaria_primo_grado taxonomy_materie_secondaria_secondo_grado taxonomy_materie_laboratori"
 
 "${composer_dir}"/scripts/setup_step04__import_optional_data.sh "$dati_da_aggiornare"
 
-printf "\n\n-- Aggiorno il modulo di ricerca ---------------------------------"
+printf "\n\n-- Aggiorno il modulo di ricerca ---------------------------------\n"
 if [ "$stato_anazetesis" != "Enabled" ]; then
   composer require ouitoulia/anazetesis
   drush -y pm:install anazetesis
@@ -131,15 +131,15 @@ drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazete
 drush cr
 drush cron -y
 
-printf "\n\n-- Disattivo i moduli config e sunchronizo se erano disattivati --"
-if [ "$stato_config" == "Disabled" ]; then
+printf "\n\n-- Disattivo i moduli config e sunchronizo se erano disattivati --\n"
+if [ "$stato_config" = "Disabled" ]; then
   drush -y pm:uninstall config
 fi
-if [ "$stato_sunchronizo" == "Disabled" ]; then
+if [ "$stato_sunchronizo" = "Disabled" ]; then
   drush -y pm:uninstall migrate
 fi
 
-printf "\n\n-- Torno nella cartella da dove è stato lanciato lo script -------"
+printf "\n\n-- Torno nella cartella da dove è stato lanciato lo script -------\n"
 cd "$current_path" || exit 1
 
 printf "\n\n-- Aggiornamento concluso. --\n\n"

@@ -30,7 +30,7 @@ format_migrazione() {
 for opzione in $opzioni; do
   nome_migrazione_formattata=$(format_migrazione "$opzione")
 
-  printf "Vuoi importare %s? [si/no] (no): " "$nome_migrazione_formattata"
+  printf "\nVuoi importare %s? [si/no] (no): " "$nome_migrazione_formattata"
   read -r risposta
   risposta=${risposta:-no}
 
