@@ -89,7 +89,7 @@ composer require ouitoulia/skenografia:^2 --no-cache
 
 # Controllo se sono attivi alcuni moduli
 if [ "$stato_ajax_loader" != "Enabled" ]; then
-  drush -y pm:install stato_ajax_loader
+  drush -y pm:install ajax_loader
 fi
 if [ "$stato_better_exposed_filters" != "Enabled" ]; then
   drush -y pm:install better_exposed_filters
