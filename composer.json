@@ -29,6 +29,7 @@
   ],
   "require": {
     "drupal/admin_toolbar": "^3.4",
+    "drupal/ajax_loader": "^2.1",
     "drupal/entity_reference_display": "^2.0",
     "drupal/paragraphs": ">=1.17",
     "drupal/recommended-project": "^10.2",
