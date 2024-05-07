@@ -34,13 +34,14 @@ composer_dir=$(dirname "$drupal_dir")
 current_path=$(pwd)
 
 # Salvo lo stato dei moduli necessari all'aggiornamento
-stato_config=$(drush pm:list --format=csv | grep "(config)" | awk -F ',' '{print $(NF-1)}')
-stato_sunchronizo=$(drush pm:list --format=csv | grep "(sunchronizo)" | awk -F ',' '{print $(NF-1)}')
-stato_leaflet_views=$(drush pm:list --format=csv | grep "(leaflet_views)" | awk -F ',' '{print $(NF-1)}')
-stato_menu_block=$(drush pm:list --format=csv | grep "(menu_block)" | awk -F ',' '{print $(NF-1)}')
+stato_ajax_loader=$(drush pm:list --format=csv | grep "(ajax_loader)" | awk -F ',' '{print $(NF-1)}')
+stato_anazetesis=$(drush pm:list --format=csv | grep "(anazetesis)" | awk -F ',' '{print $(NF-1)}')
 stato_better_exposed_filters=$(drush pm:list --format=csv | grep "(better_exposed_filters)" | awk -F ',' '{print $(NF-1)}')
 stato_bootstrap_italia_empty_front_page=$(drush pm:list --format=csv | grep "(bootstrap_italia_empty_front_page)" | awk -F ',' '{print $(NF-1)}')
-stato_anazetesis=$(drush pm:list --format=csv | grep "(anazetesis)" | awk -F ',' '{print $(NF-1)}')
+stato_config=$(drush pm:list --format=csv | grep "(config)" | awk -F ',' '{print $(NF-1)}')
+stato_leaflet_views=$(drush pm:list --format=csv | grep "(leaflet_views)" | awk -F ',' '{print $(NF-1)}')
+stato_menu_block=$(drush pm:list --format=csv | grep "(menu_block)" | awk -F ',' '{print $(NF-1)}')
+stato_sunchronizo=$(drush pm:list --format=csv | grep "(sunchronizo)" | awk -F ',' '{print $(NF-1)}')
 
 printf "\n\n-- Mi sposto nella cartella dove si trova composer.json ----------"
 
@@ -87,17 +88,20 @@ printf "\n\n-- Aggiorno le configurazioni di prosis e skenografia ------------\n
 composer require ouitoulia/skenografia:^2 --no-cache
 
 # Controllo se sono attivi alcuni moduli
-if [ "$stato_leaflet_views" != "Enabled" ]; then
-  drush -y pm:install leaflet_views
-fi
-if [ "$stato_menu_block" != "Enabled" ]; then
-  drush -y pm:install menu_block
+if [ "$stato_ajax_loader" != "Enabled" ]; then
+  drush -y pm:install stato_ajax_loader
 fi
 if [ "$stato_better_exposed_filters" != "Enabled" ]; then
   drush -y pm:install better_exposed_filters
 fi
 if [ "$stato_bootstrap_italia_empty_front_page" != "Enabled" ]; then
   drush -y pm:install bootstrap_italia_empty_front_page
+fi
+if [ "$stato_leaflet_views" != "Enabled" ]; then
+  drush -y pm:install leaflet_views
+fi
+if [ "$stato_menu_block" != "Enabled" ]; then
+  drush -y pm:install menu_block
 fi
 
 # Aggiorno le configurazioni

@@ -4,8 +4,8 @@
 # Run this script in the location where your composer.json is.
 
 printf "\n\n-- Installo il tema base -----------------------------------------\n"
-drush -y pm:install components big_pipe inline_form_errors responsive_image \
-         easy_breadcrumb menu_link_attributes pathauto twig_tweak
+drush -y pm:install ajax_loader components big_pipe inline_form_errors \
+          responsive_image easy_breadcrumb menu_link_attributes pathauto twig_tweak
 drush -y theme:enable bootstrap_italia
 
 printf "\n\n-- Installo Vocabolari, Media gestiti e Configurazione utenti ----\n"
