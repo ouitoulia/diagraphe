@@ -25,7 +25,7 @@ jobs:
 
       - name: Trigger workflow in naus-emporos
         run: |
-          repo_owner="ouitoulia" 
+          repo_owner="${{ github.repository_owner }}" 
           repo_name="naus-emporos"  
           event_type="trigger-workflow" 
           service="$(echo $GITHUB_REPOSITORY | cut -d/ -f2)"
