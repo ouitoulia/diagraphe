@@ -40,6 +40,9 @@ poi eseguilo. Se vuoi fare tutto con un solo comando esegui:
 sh <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.2.x/scripts/utility__upgrade_dev_env.sh")
 ```
 
+## Immagine Docker
+Informazioni sulle immagini docker si trovano nel repository https://github.com/ouitoulia/naus-emporos 
+
 ## License
 
 Copyright (C) 2023 https://github.com/ouitoulia
