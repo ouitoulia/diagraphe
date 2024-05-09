@@ -4,7 +4,17 @@
 ![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/ouitoulia/diagraphe/drupal/recommended-project?style=for-the-badge)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/ouitoulia/diagraphe?style=for-the-badge)
 
-[Diagraphè](https://www.grecoantico.com/dizionario-greco-antico.php?lemma=DIAGRAFH100) è un modello che installa la distribuzione Drupal Ouitoulía
+[Diagraphè](https://www.grecoantico.com/dizionario-greco-antico.php?lemma=DIAGRAFH100) 
+è un modello che installa la distribuzione Drupal Ouitoulía.
+Ouitoulía è un CMS modulare che implementa il modello di sito web delle Scuole italiane,
+conforme all'architettura dei contenuti e ai requisiti tecnici per il modello Scuole.
+
+Ouitoulía CMS è composto da moduli backend e moduli frontend che implementano rispettivamente
+l'architettura dei contenuti e la grafica del sito web scolastico;
+inoltre, la parte frontend aggiorna la libreria `boostrap-italia` alla versione 2 
+([approfondisci](https://github.com/ouitoulia/skenografia?tab=readme-ov-file#interfaccia-utente-ui)).
+
+Una versione demo di test è disponibile a questo indirizzo: https://test.icmarvasivizzone.edu.it/
 
 ## Installazione
 Per installare il CMS Ouitoulía procedi così
@@ -42,6 +52,10 @@ sh <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/oui
 
 ## Immagine Docker
 Informazioni sulle immagini docker si trovano nel repository https://github.com/ouitoulia/naus-emporos 
+
+## Digramma delle relazioni tra i Content Type
+[Diagramma ER](docs/diagramma-er.svg)
+![Diagramma ER](docs/diagramma-er.svg)
 
 ## License
 
