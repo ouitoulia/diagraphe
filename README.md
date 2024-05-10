@@ -53,7 +53,7 @@ sh <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/oui
 ## Immagine Docker
 Informazioni sulle immagini docker si trovano nel repository https://github.com/ouitoulia/naus-emporos 
 
-## Digramma delle relazioni tra i Content Type
+## Diagramma delle relazioni tra i Content Type
 [Diagramma ER](docs/diagramma-er.svg)
 ![Diagramma ER](docs/diagramma-er.svg)
 
