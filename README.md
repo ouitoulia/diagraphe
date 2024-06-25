@@ -31,7 +31,7 @@ $ composer install
 
 Se usi ddev puoi installare tutto con un unico comando, esegui [ddev_installer](scripts/oituolia_ddev_installer.sh)
 ```shell
-bash <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.2.x/scripts/oituolia_ddev_installer.sh")
+bash <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.3.x/scripts/oituolia_ddev_installer.sh")
 ```
 
 ## Aggiornamento
@@ -47,7 +47,7 @@ quindi prima aggiorna lo script scaricando
 https://raw.githubusercontent.com/ouitoulia/diagraphe/10.2.x/scripts/utility__upgrade_dev_env.sh ,
 poi eseguilo. Se vuoi fare tutto con un solo comando esegui:
 ```shell
-sh <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.2.x/scripts/utility__upgrade_dev_env.sh")
+sh <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.3.x/scripts/utility__upgrade_dev_env.sh")
 ```
 
 ## Immagine Docker
