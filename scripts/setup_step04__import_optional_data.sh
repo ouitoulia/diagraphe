@@ -14,7 +14,7 @@ fi
 format_migrazione() {
   local migrazione="$1"
   # Rimuovo il prefisso "taxonomy_"
-  migrazione="${migrazione//taxonomy_/}"
+  migrazione="${migrazione#taxonomy_}"
 
   # Sostituisco "_" con " "
   migrazione=$(echo "$migrazione" | tr '_' ' ')
