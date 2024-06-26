@@ -31,7 +31,7 @@ drush -y config:set user.settings register admin_only
 printf "\n\n-- Installo e configuro i moduli base --------------------------\n"
 drush -y pm:install field entity_reference_display
 
-printf "\n\n-- Impostazioni di default -------------------------------------\n"
+printf "\n\n-- Impostazioni di default del modulo core/file ----------------\n"
 drush -y config:set file.settings filename_sanitization.transliterate 1
 drush -y config:set file.settings filename_sanitization.replace_whitespace 1
 drush -y config:set file.settings filename_sanitization.replace_non_alphanumeric 1
