@@ -59,7 +59,7 @@ drush -y updb
 drush cr
 
 # Check sui moduli Ouitoulía
-# Estrai la versione corrente di ouitoulia/themethla
+# Estrae la versione corrente di ouitoulia/themethla
 themethla_version=$(composer show ouitoulia/themethla | grep 'versions :' | awk '{print $NF}' | awk -F. '{print $1}')
 
 # Verifica se la versione corrente è inferiore a 4
