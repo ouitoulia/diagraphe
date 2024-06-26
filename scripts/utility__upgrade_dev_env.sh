@@ -34,23 +34,39 @@ composer_dir=$(dirname "$drupal_dir")
 current_path=$(pwd)
 
 # Salvo lo stato dei moduli necessari all'aggiornamento
-stato_ajax_loader=$(drush pm:list --format=csv | grep "(ajax_loader)" | awk -F ',' '{print $(NF-1)}')
-stato_anazetesis=$(drush pm:list --format=csv | grep "(anazetesis)" | awk -F ',' '{print $(NF-1)}')
-stato_better_exposed_filters=$(drush pm:list --format=csv | grep "(better_exposed_filters)" | awk -F ',' '{print $(NF-1)}')
-stato_bootstrap_italia_empty_front_page=$(drush pm:list --format=csv | grep "(bootstrap_italia_empty_front_page)" | awk -F ',' '{print $(NF-1)}')
 stato_config=$(drush pm:list --format=csv | grep "(config)" | awk -F ',' '{print $(NF-1)}')
-stato_leaflet_views=$(drush pm:list --format=csv | grep "(leaflet_views)" | awk -F ',' '{print $(NF-1)}')
-stato_menu_block=$(drush pm:list --format=csv | grep "(menu_block)" | awk -F ',' '{print $(NF-1)}')
 stato_sunchronizo=$(drush pm:list --format=csv | grep "(sunchronizo)" | awk -F ',' '{print $(NF-1)}')
 
 printf "\n\n-- Mi sposto nella cartella dove si trova composer.json ----------"
 
 cd "$composer_dir" || exit 1
 
+# Check sulla versione di drupal
+# formato major.minor.patch
+drupal_version=$(composer show drupal/recommended-project | grep 'versions :' | awk '{print $NF}')
+
+# formato major.minor
+drupal_version_minor=$(echo "$drupal_version" | awk -F. '{print $1"."$2}')
+
+if [ "$drupal_version_minor" != "10.3" ]; then
+  echo "Questo script funziona solo con drupal 10.3 stai usando $drupal_version_minor"
+  exit 1
+fi
+
 printf "\n\nAggiorno il software\n"
 composer update -W --no-cache
 drush -y updb
 drush cr
+
+# Check sui moduli Ouitoulía
+# Estrai la versione corrente di ouitoulia/themethla
+themethla_version=$(composer show ouitoulia/themethla | grep 'versions :' | awk '{print $NF}' | awk -F. '{print $1}')
+
+# Verifica se la versione corrente è inferiore a 4
+if [ "$themethla_version" -lt 4 ]; then
+  echo "La versione corrente di ouitoulia/themethla è inferiore a 4. Eseguo il comando composer require..."
+  composer require ouitoulia/themethla:^4 ouitoulia/exesti:^2 ouitoulia/prosis:^2 ouitoulia/sunchronizo:^3 -W
+fi
 
 # Aggiorno le configurazioni
 if [ "$stato_config" != "Enabled" ]; then
@@ -87,23 +103,6 @@ drush migrate:import main_menu
 printf "\n\n-- Aggiorno le configurazioni di prosis e skenografia ------------\n"
 composer require ouitoulia/skenografia:^2 --no-cache
 
-# Controllo se sono attivi alcuni moduli
-if [ "$stato_ajax_loader" != "Enabled" ]; then
-  drush -y pm:install ajax_loader
-fi
-if [ "$stato_better_exposed_filters" != "Enabled" ]; then
-  drush -y pm:install better_exposed_filters
-fi
-if [ "$stato_bootstrap_italia_empty_front_page" != "Enabled" ]; then
-  drush -y pm:install bootstrap_italia_empty_front_page
-fi
-if [ "$stato_leaflet_views" != "Enabled" ]; then
-  drush -y pm:install leaflet_views
-fi
-if [ "$stato_menu_block" != "Enabled" ]; then
-  drush -y pm:install menu_block
-fi
-
 # Aggiorno le configurazioni
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/prosis/config/update"
@@ -125,11 +124,6 @@ dati_da_aggiornare="menu_opzionali taxonomy_indirizzi_di_studio_infanzia taxonom
 "${composer_dir}"/scripts/setup_step04__import_optional_data.sh "$dati_da_aggiornare"
 
 printf "\n\n-- Aggiorno il modulo di ricerca ---------------------------------\n"
-if [ "$stato_anazetesis" != "Enabled" ]; then
-  composer require ouitoulia/anazetesis
-  drush -y pm:install anazetesis
-fi
-
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazetesis/config/install"
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazetesis/config/optional"
 drush cr
