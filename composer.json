@@ -70,7 +70,8 @@
       "include": [
         "composer.custom.json",
         "web/themes/contrib/skenografia/composer.libraries.json",
-        "web/modules/contrib/toc_js/composer.libraries.json"
+        "web/modules/contrib/toc_js/composer.libraries.json",
+        "web/modules/contrib/better_exposed_filters/composer.libraries.json"
       ],
       "recurse": true,
       "replace": false,

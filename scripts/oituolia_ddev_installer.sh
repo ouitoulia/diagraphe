@@ -195,7 +195,6 @@ echo -e "\n\n"
 n "Configuro ddev" notice
 echo "-----------------------"
 ddev config --project-type=drupal --php-version=8.3 --docroot=web
-ddev config --update
 
 echo -e "\n\n"
 n "Avvio i container" notice
@@ -207,6 +206,7 @@ n "Installo Ouitoulía codebase" notice
 echo "------------------------------------"
 ddev composer clear-cache
 ddev composer create ouitoulia/diagraphe:${ouitouliaCodebaseInstallVersion} --no-install --no-cache --no-interaction
+ddev config --update
 
 echo -e "\n\n"
 n "Do i permessi di esecuzione agli script di installazione" notice
