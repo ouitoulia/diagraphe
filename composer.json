@@ -28,12 +28,12 @@
     }
   ],
   "require": {
-    "drupal/admin_toolbar": "^3.4",
+    "drupal/admin_toolbar": "^3.5",
     "drupal/ajax_loader": "^2.1",
     "drupal/entity_reference_display": "^2.0",
-    "drupal/paragraphs": ">=1.17",
-    "drupal/recommended-project": "^10.3",
-    "drupal/twig_tweak": "^3.3",
+    "drupal/paragraphs": ">=1.18",
+    "drupal/recommended-project": "10.3",
+    "drupal/twig_tweak": "^3.4",
     "oomphinc/composer-installers-extender": "^2.0",
     "ouitoulia/anazetesis": "^2",
     "ouitoulia/exesti": "^2",
@@ -60,7 +60,8 @@
       "dealerdirect/phpcodesniffer-composer-installer": true,
       "oomphinc/composer-installers-extender": true,
       "wikimedia/composer-merge-plugin": true,
-      "php-http/discovery": true
+      "php-http/discovery": true,
+      "tbachert/spi": true
     },
     "sort-packages": true
   },
