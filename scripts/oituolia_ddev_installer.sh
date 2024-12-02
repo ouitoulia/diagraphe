@@ -194,7 +194,8 @@ done
 echo -e "\n\n"
 n "Configuro ddev" notice
 echo "-----------------------"
-ddev config --project-type=drupal10 --docroot=web --create-docroot
+ddev config --project-type=drupal --php-version=8.3 --docroot=web
+ddev config --update
 
 echo -e "\n\n"
 n "Avvio i container" notice
