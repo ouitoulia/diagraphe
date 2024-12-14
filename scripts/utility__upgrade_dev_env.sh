@@ -130,7 +130,7 @@ drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazete
 drush cr
 drush cron -y
 
-if [ "$stato_keryx" != "Enabled" ]; then
+if [ "$stato_keryx" = "Enabled" ]; then
   printf "\n\n-- Keryx è installato lo aggiorno --------------------------------\n"
   drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/keryx/config/install/"
   drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/keryx/config/update/"
