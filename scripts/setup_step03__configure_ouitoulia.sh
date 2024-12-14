@@ -48,6 +48,8 @@ case $installa_at_ed_albo in
     composer require ouitoulia/keryx
     drush pm:install keryx
     drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/keryx/config/update/"
+    drush migrate:import amministrazione_trasparente_obblighi
+    drush migrate:import amministrazione_trasparente_categorie
   ;;
 esac
 
