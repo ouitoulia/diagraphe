@@ -36,6 +36,7 @@ current_path=$(pwd)
 # Salvo lo stato dei moduli necessari all'aggiornamento
 stato_config=$(drush pm:list --format=csv | grep "(config)" | awk -F ',' '{print $(NF-1)}')
 stato_sunchronizo=$(drush pm:list --format=csv | grep "(sunchronizo)" | awk -F ',' '{print $(NF-1)}')
+stato_keryx=$(drush pm:list --format=csv | grep "(keryx)" | awk -F ',' '{print $(NF-1)}')
 
 printf "\n\n-- Mi sposto nella cartella dove si trova composer.json ----------"
 
@@ -95,10 +96,10 @@ drush -y config:import --partial --source="${drupal_dir}/modules/contrib/sunchro
 drush cr
 
 printf "\n\n-- Aggiorno i dati obbligatori -----------------------------------\n"
-drush migrate:import taxonomy_common_uuid
-drush migrate:import taxonomy_common
-drush migrate:import scuola_roles
-drush migrate:import main_menu
+drush migrate:import --update taxonomy_common_uuid
+drush migrate:import --update taxonomy_common
+drush migrate:import --update scuola_roles
+drush migrate:import --update main_menu
 
 printf "\n\n-- Aggiorno le configurazioni di prosis e skenografia ------------\n"
 composer require ouitoulia/skenografia:^2 --no-cache
@@ -128,6 +129,14 @@ drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazete
 drush -y config:import --partial --source="${drupal_dir}/modules/contrib/anazetesis/config/optional"
 drush cr
 drush cron -y
+
+if [ "$stato_keryx" != "Enabled" ]; then
+  printf "\n\n-- Keryx è installato lo aggiorno --------------------------------\n"
+  drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/keryx/config/install/"
+  drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/keryx/config/update/"
+  drush migrate:import --update amministrazione_trasparente_obblighi
+  drush migrate:import --update amministrazione_trasparente_categorie
+fi
 
 printf "\n\n-- Disattivo i moduli config e sunchronizo se erano disattivati --\n"
 if [ "$stato_config" = "Disabled" ]; then
