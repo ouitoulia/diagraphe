@@ -38,4 +38,17 @@ drush -y config:import --partial --source="$(drush drupal:directory)/modules/con
 printf "\n\n-- Installo il modulo di ricerca -------------------------------\n"
 drush -y pm:install anazetesis
 
+printf "\n\n-- Amministrazione trasparente ed Albo -------------------------\n"
+printf "\nVuoi installare Albo e Amministrazione trasparente? [si/no] (no): "
+read -r installa_at_ed_albo
+installa_at_ed_albo=${installa_at_ed_albo:-no}
+
+case $installa_at_ed_albo in
+  si|yes|s|y)
+    composer require ouitoulia/keryx
+    drush pm:install keryx
+    drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/keryx/config/update/"
+  ;;
+esac
+
 drush -y pm:uninstall config
