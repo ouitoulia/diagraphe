@@ -13,6 +13,8 @@
 declare -gr timestamp_start=$(date +%s)
 
 #-[ Impostazioni ]----------------
+# Abort this entire script if any one command fails.
+set -e
 loggingInFile=0
 notificationDisplayLevelNotice=1
 notificationDisplayLevelSuccess=1
@@ -159,6 +161,10 @@ echo "#                           #"
 echo " ###########################"`tput sgr0`
 echo " "
 
+if ! command -v ddev >/dev/null; then
+  echo "DDEV needs to be installed. Visit https://ddev.com/get-started for instructions."
+  exit 1
+fi
 
 # Nome del progetto
 read -r -p "Nome del progetto (fomato FQDN host) [a-z0-9] (mia-scuola): " project_name
