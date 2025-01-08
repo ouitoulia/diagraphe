@@ -33,6 +33,7 @@
     "drupal/entity_reference_display": "^2.0",
     "drupal/paragraphs": ">=1.18",
     "drupal/recommended-project": "10.3",
+    "drupal/core-recommended": "10.3.*",
     "drupal/twig_tweak": "^3.4",
     "oomphinc/composer-installers-extender": "^2.0",
     "ouitoulia/anazetesis": "^2",
