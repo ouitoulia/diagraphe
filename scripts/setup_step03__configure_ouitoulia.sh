@@ -18,6 +18,7 @@ drush -y pm:install themethla
 printf "\n\n-- Installo il sub-theme ---------------------------------------\n"
 drush -y theme:enable skenografia
 drush -y config:set system.theme default skenografia
+drush -y locale:import it "$(drush drupal:directory)/themes/contrib/skenografia/translations/skenografia.it.po"
 
 drush -y pm:install config
 # Fix node_reference module for minimal profile
