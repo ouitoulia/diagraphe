@@ -41,7 +41,7 @@
     "ouitoulia/prosis": "^2",
     "ouitoulia/skenografia": "^2",
     "ouitoulia/sunchronizo": "^3",
-    "ouitoulia/themethla": "^4",
+    "ouitoulia/themethla": "^5",
     "wikimedia/composer-merge-plugin": "^2.1"
   },
   "require-dev": {
