@@ -1,7 +1,7 @@
 # Diagraphè
 ![GitHub](https://img.shields.io/github/license/ouitoulia/diagraphe?style=for-the-badge)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ouitoulia/diagraphe?sort=semver&style=for-the-badge)
-![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/ouitoulia/diagraphe/drupal/recommended-project?style=for-the-badge)
+![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/ouitoulia/diagraphe/drupal/core-recommended?style=for-the-badge)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/ouitoulia/diagraphe?style=for-the-badge)
 
 [Diagraphè](https://www.grecoantico.com/dizionario-greco-antico.php?lemma=DIAGRAFH100) 
@@ -31,7 +31,7 @@ $ composer install
 
 Se usi ddev puoi installare tutto con un unico comando, esegui [ddev_installer](scripts/oituolia_ddev_installer.sh)
 ```shell
-bash <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.3.x/scripts/oituolia_ddev_installer.sh")
+bash <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.4.x/scripts/oituolia_ddev_installer.sh")
 ```
 
 ## Aggiornamento
@@ -44,10 +44,10 @@ non è testato per gli ambienti di produzione.
 Prima di eseguire lo script di aggiornamento assicurati che sia l'ultima versione 
 disponibile - viene aggiornato in base ai cambiamenti effettuati negli altri moduli -
 quindi prima aggiorna lo script scaricando 
-https://raw.githubusercontent.com/ouitoulia/diagraphe/10.2.x/scripts/utility__upgrade_dev_env.sh ,
+https://raw.githubusercontent.com/ouitoulia/diagraphe/10.4.x/scripts/utility__upgrade_dev_env.sh ,
 poi eseguilo. Se vuoi fare tutto con un solo comando esegui:
 ```shell
-sh <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.3.x/scripts/utility__upgrade_dev_env.sh")
+sh <(curl -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/ouitoulia/diagraphe/10.4.x/scripts/utility__upgrade_dev_env.sh")
 ```
 
 ## Immagine Docker
