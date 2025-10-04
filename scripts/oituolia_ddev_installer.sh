@@ -23,7 +23,7 @@ notificationDisplayLevelDanger=1
 notificationDisplayLevelDebugLiv1=0
 notificationDisplayLevelDebugLiv2=0
 notificationDisplayLevelDebugLiv3=0
-ouitouliaCodebaseInstallVersion="^10.3"
+ouitouliaCodebaseInstallVersion="^10.5"
 
 # La cartella base dove si trova questo script
 if [[ -L "${BASH_SOURCE[0]}" ]]; then
