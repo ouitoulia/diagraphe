@@ -29,10 +29,10 @@
   ],
   "require": {
     "composer/installers": "^2.0",
-    "drupal/admin_toolbar": "^3.5",
+    "drupal/admin_toolbar": "^3.6",
     "drupal/ajax_loader": "^2.1",
     "drupal/entity_reference_display": "^2.0",
-    "drupal/paragraphs": ">=1.18",
+    "drupal/paragraphs": ">=1.19",
     "drupal/core-composer-scaffold": "10.5.*",
     "drupal/core-project-message": "10.5.*",
     "drupal/core-recommended": "10.5.*",
