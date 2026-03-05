@@ -23,7 +23,7 @@ notificationDisplayLevelDanger=1
 notificationDisplayLevelDebugLiv1=0
 notificationDisplayLevelDebugLiv2=0
 notificationDisplayLevelDebugLiv3=0
-ouitouliaCodebaseInstallVersion="^10.5"
+ouitouliaCodebaseInstallVersion="^10.6"
 
 # La cartella base dove si trova questo script
 if [[ -L "${BASH_SOURCE[0]}" ]]; then
@@ -200,7 +200,7 @@ done
 echo -e "\n\n"
 n "Configuro ddev" notice
 echo "-----------------------"
-ddev config --project-type=drupal --php-version=8.3 --docroot=web
+ddev config --project-type=drupal --php-version=8.4 --docroot=web
 
 echo -e "\n\n"
 n "Avvio i container" notice
