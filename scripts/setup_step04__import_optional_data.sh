@@ -37,12 +37,12 @@ for opzione in $opzioni; do
   case $risposta in
     si|yes|s|y)
       if [ "$opzione" = "demo" ]; then
-        drush migrate:import --update --all
+        drush migrate:import --update --all --execute-dependencies
         drush -y config:set system.site name "Ouitoulía CMS"
         drush -y config:set system.site slogan "Sito web dimostrativo"
         break
       else
-        drush migrate:import --update "$opzione"
+        drush migrate:import --update "$opzione" --execute-dependencies
       fi
       ;;
   esac
