@@ -27,10 +27,10 @@ drush -y config:import --partial --source="$(drush drupal:directory)/themes/cont
 
 printf "\n\n-- Importo i dati obbligatori ----------------------------------\n"
 drush -y pm:install sunchronizo
-drush migrate:import taxonomy_common_uuid
-drush migrate:import taxonomy_common
-drush migrate:import scuola_roles
-drush migrate:import main_menu
+drush migrate:import taxonomy_common_uuid --execute-dependencies
+drush migrate:import taxonomy_common --execute-dependencies
+drush migrate:import scuola_roles --execute-dependencies
+drush migrate:import main_menu --execute-dependencies
 
 printf "\n\n-- Installo Viste, Blocchi e Permessi --------------------------\n"
 drush -y pm:install prosis exesti
@@ -49,8 +49,8 @@ case $installa_at_ed_albo in
     composer require ouitoulia/keryx
     drush pm:install keryx
     drush -y config:import --partial --source="$(drush drupal:directory)/modules/contrib/keryx/config/update/"
-    drush migrate:import amministrazione_trasparente_obblighi
-    drush migrate:import amministrazione_trasparente_categorie
+    drush migrate:import amministrazione_trasparente_obblighi --execute-dependencies
+    drush migrate:import amministrazione_trasparente_categorie --execute-dependencies
   ;;
 esac
 
