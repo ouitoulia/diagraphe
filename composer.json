@@ -9,11 +9,6 @@
       "email": "arturu@arturu.it",
       "homepage": "https://www.drupal.org/u/arturopanetta",
       "role": "Maintainer"
-    },
-    {
-      "name": "Maurizio Cavalletti",
-      "homepage": "https://www.drupal.org/u/maurizio_akabit",
-      "role": "Maintainer"
     }
   ],
   "homepage": "https://github.com/ouitoulia/diagraphe",
@@ -28,7 +23,8 @@
     }
   ],
   "require": {
-    "composer/installers": "^2.0",
+    "composer/installers": "^2.3",
+    "cweagans/composer-patches": "^1.7",
     "drupal/admin_toolbar": "^3.6",
     "drupal/ajax_loader": "^2.1",
     "drupal/entity_reference_display": "^2.0",
@@ -57,14 +53,16 @@
   "config": {
     "allow-plugins": {
       "composer/installers": true,
+      "cweagans/composer-patches": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
       "drupal/core-composer-scaffold": true,
       "drupal/core-project-message": true,
-      "phpstan/extension-installer": true,
-      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "drupal/core-recipe-unpack": true,
       "oomphinc/composer-installers-extender": true,
-      "wikimedia/composer-merge-plugin": true,
       "php-http/discovery": true,
-      "tbachert/spi": true
+      "phpstan/extension-installer": true,
+      "tbachert/spi": true,
+      "wikimedia/composer-merge-plugin": true
     },
     "sort-packages": true
   },
@@ -99,7 +97,8 @@
       "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
       "web/modules/custom/{$name}": ["type:drupal-custom-module"],
       "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
-      "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
+      "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
+      "recipes/{$name}": ["type:drupal-recipe"]
     },
     "drupal-core-project-message": {
       "include-keys": ["homepage","support"],
