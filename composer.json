@@ -29,6 +29,7 @@
   ],
   "require": {
     "composer/installers": "^2.3",
+    "consolidation/robo": "5.1.1",
     "cweagans/composer-patches": "^1.7",
     "drupal/admin_toolbar": "^3.6",
     "drupal/ajax_loader": "^2.1",
@@ -45,6 +46,7 @@
     "ouitoulia/skenografia": "^2",
     "ouitoulia/sunchronizo": "^3",
     "ouitoulia/themethla": "^5",
+    "twig/twig": "^3.29",
     "wikimedia/composer-merge-plugin": "^2.1"
   },
   "require-dev": {
